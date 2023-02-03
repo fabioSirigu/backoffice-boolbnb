@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-
-class UpdateServiceRequest extends FormRequest
+class UpdateSponsoredRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +27,11 @@ class UpdateServiceRequest extends FormRequest
         return [
             'title' => [
                 'required',
-                Rule::unique('services')->ignore($this->service->id),
+                Rule::unique('sponsoreds')->ignore($this->sponsored->id),
             ],
             'slug' => 'required|max:255',
+            'price' => 'required|integer',
+            'duration' => 'required|integer'
         ];
     }
 }

@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
-class Service extends Model
+class Sponsored extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug'];
+    protected $fillable = ['title', 'slug', 'price', 'duration'];
 
     public static function createSlug($title)
     {
-        $home_slug = Str::slug($title);
-        return $home_slug;
+        $sponsored_slug = Str::slug($title);
+        return $sponsored_slug;
     }
     /**
      * The tags that belong to the Post

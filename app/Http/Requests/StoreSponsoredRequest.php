@@ -3,10 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-
-class UpdateServiceRequest extends FormRequest
+class StoreSponsoredRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +24,10 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'required',
-                Rule::unique('services')->ignore($this->service->id),
-            ],
+            'title' => 'required|unique:services,title',
             'slug' => 'required|max:255',
+            'price' => 'required|integer',
+            'duration' => 'required|integer'
         ];
     }
 }

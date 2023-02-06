@@ -15,8 +15,8 @@ class Service extends Model
 
     public static function createSlug($title)
     {
-        $home_slug = Str::slug($title);
-        return $home_slug;
+        $service_slug = Str::slug($title);
+        return $service_slug;
     }
     /**
      * The tags that belong to the Post

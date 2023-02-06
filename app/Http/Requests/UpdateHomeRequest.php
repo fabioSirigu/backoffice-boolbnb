@@ -29,15 +29,16 @@ class UpdateHomeRequest extends FormRequest
                 'required',
                 Rule::unique('homes')->ignore($this->home->id),
             ],
-            'slug' => 'required|max:255',
+            'slug' => 'max:255',
             'rooms' => 'required|min:1',
             'beds' => 'required|max:1|max:25',
             'bathrooms' => 'required|max:1|max:255',
+            'square_meters' => 'required|min:1',
             'address' => 'required|min:5|max:255',
-            'latitude' => 'required|nullable|min:5|max:100',
-            'longitude' => 'required|nullable|min:5|max:100',
-            'cover_image' => 'required|image|max:300',
-            'visible' => 'required|boolean'
+            'latitude' => 'required|min:1|max:100',
+            'longitude' => 'required|min:1|max:100',
+            'cover_image' => 'image',
+            'visible' => 'required'
         ];
     }
 }

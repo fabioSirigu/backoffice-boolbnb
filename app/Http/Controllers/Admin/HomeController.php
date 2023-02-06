@@ -83,6 +83,7 @@ class HomeController extends Controller
      */
     public function edit(Home $home)
     {
+        $homes = Home::all();
         return view('admin.homes.edit', compact('home'));
     }
 
@@ -97,17 +98,23 @@ class HomeController extends Controller
     {
         $val_data = $request->validated();
 
-        /*  if ($request->hasFile('cover_image')) {
-            if ($project->cover_image) {
-                Storage::delete($project->cover_image);
+        if ($request->hasFile('cover_image')) {
+
+            if ($home->cover_image) {
+                Storage::delete($home->cover_image);
             }
+
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            //dd($cover_image);
+            // replace the value of cover_image inside $val_data
             $val_data['cover_image'] = $cover_image;
-        } */
+        }
+
         $slug_data = Home::createSlug($val_data['title']);
         $val_data['slug'] =  $slug_data;
         //$home = Home::create($val_data);
         $home->update($val_data);
+
         /* if ($request->has('technologies')) {
             $home->technologies()->sync($val_data['technologies']);
         } else {

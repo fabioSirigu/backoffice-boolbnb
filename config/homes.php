@@ -2,6 +2,7 @@
 
 return [
     [
+        'user_id' => '1',
         'title' => 'Il tuo Sogno',
         'slug' => '',
         'rooms' => '5',
@@ -15,6 +16,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Suite Ognissanti Firenze',
         'slug' => '',
         'rooms' => '6',
@@ -28,6 +30,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Florence Santa Croce - Quiet',
         'slug' => '',
         'rooms' => '5',
@@ -41,6 +44,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Maison Brunelleschi - 50m dal Duomo, Ascensore',
         'slug' => '',
         'rooms' => '6',
@@ -54,6 +58,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Traveller Nest: il nido dei viaggiatori',
         'slug' => '',
         'rooms' => '4',
@@ -67,6 +72,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'APPARTAMENTO CENTRO STORICO FIRENZE',
         'slug' => '',
         'rooms' => '7',
@@ -80,6 +86,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Love the Space',
         'slug' => '',
         'rooms' => '5',
@@ -93,6 +100,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'SUITE PICCOLO PRINCIPE Ognissanti square, Polimoda',
         'slug' => '',
         'rooms' => '4',
@@ -106,6 +114,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Florence room',
         'slug' => '',
         'rooms' => '5',
@@ -119,6 +128,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Casa con grande terrazza Empoli',
         'slug' => '',
         'rooms' => '6',
@@ -132,6 +142,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Punto nel Cuore - Appartamento',
         'slug' => '',
         'rooms' => '4',
@@ -145,6 +156,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Valia Florence Pitti accanto a Palazzo Pitti',
         'slug' => '',
         'rooms' => '5',
@@ -158,6 +170,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Dante&Beatrice Flat - Santa Maria Novella',
         'slug' => '',
         'rooms' => '9',
@@ -171,6 +184,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Apartment By Villa Il Mosaico',
         'slug' => '',
         'rooms' => '5',
@@ -184,6 +198,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Elegante, Romantico, Confortevole Appartamento!',
         'slug' => '',
         'rooms' => '6',
@@ -197,6 +212,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Moderno e Funzionale Monolocale',
         'slug' => '',
         'rooms' => '4',
@@ -210,6 +226,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'IL MAGNIFICO - Home in Florence',
         'slug' => '',
         'rooms' => '6',
@@ -223,6 +240,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'I tre cipressi',
         'slug' => '',
         'rooms' => '4',
@@ -236,6 +254,7 @@ return [
         'visible' => true
     ],
     [
+        'user_id' => '1',
         'title' => 'Bilocale - Santo Spirito',
         'slug' => '',
         'rooms' => '6',

@@ -50,7 +50,7 @@
                 </label>
             </div>
             <div class="form-check px-5">
-                <input class="form-check-input" value="0" type="radio" name="visible" value="0" @if(old('visible',$home->visible)=="0") checked @endif id="visible_0" >
+                <input class="form-check-input" type="radio" name="visible" value="0" @if(old('visible',$home->visible)=="0") checked @endif id="visible_0" >
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>

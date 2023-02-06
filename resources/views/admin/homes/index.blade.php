@@ -66,7 +66,7 @@
 
             </tfoot>
       </table>
-      {{$homes->links('vendor.pagination.bootstrap-5')}}
+      <!-- $homes->links('vendor.pagination.bootstrap-5') -->
 </div>
 
 

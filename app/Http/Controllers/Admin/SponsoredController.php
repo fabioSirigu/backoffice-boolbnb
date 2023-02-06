@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Sponsored;
 use App\Http\Requests\StoreSponsoredRequest;
 use App\Http\Requests\UpdateSponsoredRequest;

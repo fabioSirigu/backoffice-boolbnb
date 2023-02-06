@@ -25,7 +25,16 @@ class StoreServiceRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:services,title',
-            'slug' => 'required|max:255',
+            'cover_image' => 'required|image',
+            'rooms' => 'required|min:1',
+            'beds' => 'required|min:1',
+            'bathrooms' => 'required|min:1',
+            'square_meters' => 'required|min:5',
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'visible' => 'required',
+            'slug' => 'max:255',
         ];
     }
 }

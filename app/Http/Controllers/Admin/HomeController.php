@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('admin.homes.create', compact('home'));
+        return view('admin.homes.create');
     }
 
     /**
@@ -41,13 +41,16 @@ class HomeController extends Controller
     public function store(StoreHomeRequest $request)
     {
         $val_data = $request->validated();
-        /* if ($request->hasFile('cover_image')) {
+
+        if ($request->hasFile('cover_image')) {
 
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
-        } */
+        }
+
         $slug_data = Home::createSlug($val_data['title']);
         $val_data['slug'] =  $slug_data;
+
         $home = Home::create($val_data);
 
         /* if ($request->has('technologies')) {

@@ -7,6 +7,7 @@ use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -49,7 +50,10 @@ class HomeController extends Controller
         }
 
         $slug_data = Home::createSlug($val_data['title']);
+
         $val_data['slug'] =  $slug_data;
+
+        $val_data['visible'] = 'true' ? 1 : 0;
 
         $home = Home::create($val_data);
 

@@ -44,13 +44,13 @@
         </div>
         <div class="mb-3 d-flex">
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="1" name="visible" id="visible_1" >
+                <input class="form-check-input" type="radio" value="1" @if(old('visible',$home->visible)=="1") checked @endif name="visible" id="visible_1" >
                 <label class="form-check-label" for="flexRadioDefault1">
                     Visible
                 </label>
             </div>
             <div class="form-check px-5">
-                <input class="form-check-input" value="0" type="radio" name="visible" value="0" id="visible_0" >
+                <input class="form-check-input" value="0" type="radio" name="visible" value="0" @if(old('visible',$home->visible)=="0") checked @endif id="visible_0" >
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>

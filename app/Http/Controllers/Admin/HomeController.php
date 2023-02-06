@@ -53,8 +53,6 @@ class HomeController extends Controller
 
         $val_data['slug'] =  $slug_data;
 
-        $val_data['visible'] = 'true' ? 1 : 0;
-
         $home = Home::create($val_data);
 
         /* if ($request->has('technologies')) {

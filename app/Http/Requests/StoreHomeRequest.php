@@ -29,6 +29,7 @@ class StoreHomeRequest extends FormRequest
             'rooms' => 'required|min:1',
             'beds' => 'required|max:1|max:25',
             'bathrooms' => 'required|max:1|max:255',
+            'square_meters' => 'required|min:1',
             'address' => 'required|min:5|max:255',
             'latitude' => 'required|min:1|max:100',
             'longitude' => 'required|min:1|max:100',

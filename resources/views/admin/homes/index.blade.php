@@ -32,6 +32,8 @@
 
                         </td>
                         <td>{{$home->title}}</td>
+                        <td>{{$home->address}}</td>
+                        <td>{{$home->rooms}}</td>
                         <td>
                               <a href='{{route("admin.homes.show", $home->slug)}}' class="btn btn-primary view">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">

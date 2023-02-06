@@ -19,6 +19,7 @@ class HomeSeeder extends Seeder
         $homes = config('homes');
         foreach ($homes as $home) {
             $new_home = new Home();
+            $new_home->user_id = $home['user_id'];
             $new_home->title = $home['title'];
             $new_home->slug = Str::slug($home['title'], '-');
             $new_home->rooms = $home['rooms'];

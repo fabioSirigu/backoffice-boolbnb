@@ -29,8 +29,8 @@ class UpdateSponsoredRequest extends FormRequest
                 'required',
                 Rule::unique('sponsoreds')->ignore($this->sponsored->id),
             ],
-            'slug' => 'required|max:255',
-            'price' => 'required|integer',
+            'slug' => 'max:255',
+            'price' => 'required',
             'duration' => 'required|integer'
         ];
     }

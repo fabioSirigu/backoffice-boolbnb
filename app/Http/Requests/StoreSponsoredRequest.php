@@ -24,9 +24,9 @@ class StoreSponsoredRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:services,title',
-            'slug' => 'required|max:255',
-            'price' => 'required|integer',
+            'title' => 'required|unique:sponsoreds,title',
+            'slug' => 'max:255',
+            'price' => 'required',
             'duration' => 'required|integer'
         ];
     }

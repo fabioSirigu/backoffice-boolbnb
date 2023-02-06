@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SponsoredController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
 
     Route::resource('services', ServiceController::class)->parameters([
         'services' => 'service:slug'
+    ]);
+
+    Route::resource('sponsored', SponsoredController::class)->parameters([
+        'sponsored' => 'sponsored:slug'
     ]);
 });
 

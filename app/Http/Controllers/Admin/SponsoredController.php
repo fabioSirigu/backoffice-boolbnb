@@ -16,7 +16,9 @@ class SponsoredController extends Controller
      */
     public function index()
     {
-        //
+        $sponsoreds = Sponsored::orderByDesc('id')->get();
+        //dd($sponsoreds);
+        return view('admin.sponsored.index', compact('sponsoreds'));
     }
 
     /**
@@ -26,7 +28,7 @@ class SponsoredController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sponsored.create');
     }
 
     /**
@@ -37,7 +39,15 @@ class SponsoredController extends Controller
      */
     public function store(StoreSponsoredRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug_data = Sponsored::createSlug($val_data['title']);
+
+        $val_data['slug'] =  $slug_data;
+
+        $sponsored = Sponsored::create($val_data);
+
+        return to_route('admin.sponsored.index')->with('message', "The Sponsored: $sponsored->title added successfully");
     }
 
     /**
@@ -59,7 +69,8 @@ class SponsoredController extends Controller
      */
     public function edit(Sponsored $sponsored)
     {
-        //
+        $sponsoreds = Sponsored::all();
+        return view('admin.sponsored.edit', compact('sponsored'));
     }
 
     /**
@@ -71,7 +82,15 @@ class SponsoredController extends Controller
      */
     public function update(UpdateSponsoredRequest $request, Sponsored $sponsored)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug_data = Sponsored::createSlug($val_data['title']);
+
+        $val_data['slug'] =  $slug_data;
+
+        $sponsored->update($val_data);
+
+        return to_route('admin.sponsored.index')->with('message', "The Sponsored: $sponsored->title update successfully");
     }
 
     /**
@@ -82,6 +101,7 @@ class SponsoredController extends Controller
      */
     public function destroy(Sponsored $sponsored)
     {
-        //
+        $sponsored->delete();
+        return redirect()->route('admin.sponsored.index')->with('message', "The Sponsored: $sponsored->title deleted successfully");
     }
 }

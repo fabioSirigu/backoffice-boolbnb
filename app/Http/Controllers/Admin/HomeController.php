@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $homes = Home::orderByDesc('id');
+        $homes = Home::orderByDesc('id')->get();
         //dd($homes);
         return view('admin.homes.index', compact('homes'));
     }

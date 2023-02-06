@@ -12,28 +12,37 @@
 
                   <tr>
                         <th>ID</th>
-                        <th>Image</th>
+                        <th>User ID</th>
                         <th>Title</th>
-                        <th>Date Create</th>
-                        <th>Actions</th>
+                        <th>Rooms</th>
+                        <th>Beds</th>
+                        <th>Bathrooms</th>
+                        <th>Square Meters</th>
+                        <th>Address</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Cover Image</th>
+                        <th>Visible</th>
                   </tr>
             </thead>
             <tbody class="table-group-divider">
                   @forelse ($homes as $home)
                   <tr class="table-primary">
                         <td scope="row">{{$home->id}}</td>
+                        <td scope="row">{{$home->user_id}}</td>
+                        <td scope="row">{{$home->title}}</td>
+                        <td scope="row">{{$home->square_meters}}</td>
+                        <td scope="row">{{$home->address}}</td>
+                        <td scope="row">{{$home->latitude}}</td>
+                        <td scope="row">{{$home->longitude}}</td>
                         <td>
-
-                              @if($home->cover_image)
+                              <!-- if($home->cover_image)
                               <img width="100" class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
-                              @else
+                              else
                               <div class="placeholder p-5 bg-secondary d-flex align-items-center justify-content-center" style="width:100px">Placeholder</div>
-                              @endif
-
+                              endif -->
                         </td>
-                        <td>{{$home->title}}</td>
-                        <td>{{$home->address}}</td>
-                        <td>{{$home->rooms}}</td>
+                        <td scope="row">{{$home->cover_image}}</td>
                         <td>
                               <a href='{{route("admin.homes.show", $home->slug)}}' class="btn btn-primary view">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">

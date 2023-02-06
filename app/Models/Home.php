@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Home extends Model
 {
-    protected $fillable = ['title', 'slug', 'rooms', 'beds', 'bathrooms', 'address', 'latitude', 'longitude', 'cover_image', 'visible'];
+    protected $fillable = ['user_id', 'title', 'slug', 'rooms', 'beds', 'bathrooms', 'address', 'latitude', 'longitude', 'cover_image', 'visible'];
 
     public static function createSlug($title)
     {

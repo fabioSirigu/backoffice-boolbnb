@@ -25,7 +25,6 @@ class StoreHomeRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:homes,title',
-            'user_id' => auth()->id(),
             'slug' => 'max:255',
             'rooms' => 'required|min:1',
             'beds' => 'required|max:1|max:25',

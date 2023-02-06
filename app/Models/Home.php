@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Home extends Model
 {
-    protected $fillable = ['user_id', 'title', 'slug', 'rooms', 'beds', 'bathrooms', 'address', 'latitude', 'longitude', 'cover_image', 'visible'];
+    protected $fillable = ['user_id', 'title', 'slug', 'rooms', 'beds', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'cover_image', 'visible'];
 
     public static function createSlug($title)
     {

@@ -53,6 +53,8 @@ class HomeController extends Controller
 
         $val_data['slug'] =  $slug_data;
 
+        $val_data['user_id'] = Auth::id();
+
         $home = Home::create($val_data);
 
         /* if ($request->has('technologies')) {

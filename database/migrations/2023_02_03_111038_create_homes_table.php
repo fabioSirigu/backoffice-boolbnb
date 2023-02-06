@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('cover_image');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

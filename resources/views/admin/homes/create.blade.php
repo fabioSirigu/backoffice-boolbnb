@@ -20,16 +20,16 @@
             <input type="text" name="title" id="title" class="form-control" placeholder="Nome" value="{{old('title')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="text" name="rooms" id="rooms" class="form-control" placeholder="Stanze" value="{{old('rooms')}}" aria-describedby="helpId" required>
+            <input type="number" name="rooms" id="rooms" class="form-control" placeholder="Stanze" value="{{old('rooms')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="text" name="beds" id="beds" class="form-control" placeholder="Letti" value="{{old('beds')}}" aria-describedby="helpId" required>
+            <input type="number" name="beds" id="beds" class="form-control" placeholder="Letti" value="{{old('beds')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="text" name="bathrooms" id="bathrooms" class="form-control" placeholder="Bagni" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
+            <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Bagni" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="text" name="square_meters" id="square_meters" class="form-control" placeholder="Metri quadrati" value="{{old('square_meters')}}" aria-describedby="helpId" required>
+            <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Metri quadrati" value="{{old('square_meters')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
             <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
@@ -42,15 +42,15 @@
         </div>
         <div class="mb-3 d-flex">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="visible" value="true" id="visible_1">
+                <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                  Visible
+                    Visible
                 </label>
-              </div>
-              <div class="form-check px-5">
-                <input class="form-check-input" type="radio" name="visible" value="false" id="visible_0" checked>
+            </div>
+            <div class="form-check px-5">
+                <input class="form-check-input" type="radio" name="visible" value="0" id="visible_0" checked>
                 <label class="form-check-label" for="flexRadioDefault2">
-                  Not Visible
+                    Not Visible
                 </label>
             </div>
         </div>

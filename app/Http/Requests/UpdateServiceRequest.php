@@ -30,7 +30,7 @@ class UpdateServiceRequest extends FormRequest
                 'required',
                 Rule::unique('services')->ignore($this->service->id),
             ],
-            'slug' => 'required|max:255',
+            'slug' => 'max:255',
         ];
     }
 }

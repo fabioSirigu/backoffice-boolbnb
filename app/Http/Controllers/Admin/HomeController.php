@@ -90,16 +90,18 @@ class HomeController extends Controller
         /* dd(Home::all()); */
 
         $homes = Auth::user()->homes;
+        return view('admin.homes.edit', compact('home'));
+
         /* return view('admin.homes.edit', compact('home')); */
 
-        foreach ($homes as $home) {
+        /* foreach ($homes as $home) {
 
             if ($home->user_id != Auth::user()->id) {
                 return redirect()->route('admin.homes.index')->with('message', "La casa: $home->title non ti appartiene!");
             } else {
                 return view('admin.homes.edit', compact('home'));
             }
-        }
+        } */
     }
 
     /**

@@ -22,10 +22,10 @@
             <input type="text" name="title" id="title" class="form-control" placeholder="Nome" value="{{old('title', $sponsored->title)}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="text" name="price" id="price" class="form-control" placeholder="Prezzo" value="{{old('price')}}" aria-describedby="helpId" required>
+            <input type="text" name="price" id="price" class="form-control" placeholder="Prezzo" value="{{old('price', $sponsored->price)}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
-            <input type="number" name="duration" id="duration" class="form-control" placeholder="Durata" value="{{old('duration')}}" aria-describedby="helpId" required>
+            <input type="number" name="duration" id="duration" class="form-control" placeholder="Durata" value="{{old('duration', $sponsored->duration)}}" aria-describedby="helpId" required>
         </div>
         <button type="submit" class="btn btn-primary">Invia!</button>
     </form>

@@ -17,7 +17,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Home $home)
     {
         $homes = Auth::user()->homes;
         /* dd(Auth::user()->homes); */
@@ -87,21 +87,15 @@ class HomeController extends Controller
      */
     public function edit(Home $home)
     {
-        /* dd(Home::all()); */
 
-        $homes = Auth::user()->homes;
-        return view('admin.homes.edit', compact('home'));
+        /* dd($home->user_id); */
 
-        /* return view('admin.homes.edit', compact('home')); */
-
-        /* foreach ($homes as $home) {
-
-            if ($home->user_id != Auth::user()->id) {
-                return redirect()->route('admin.homes.index')->with('message', "La casa: $home->title non ti appartiene!");
-            } else {
-                return view('admin.homes.edit', compact('home'));
-            }
-        } */
+        if ($home->user_id === Auth::user()->id) {
+            return view('admin.homes.edit', compact('home'));
+        } else {
+            $homes = Auth::user()->homes;
+            return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");
+        }
     }
 
     /**

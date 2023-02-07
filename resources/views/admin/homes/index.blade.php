@@ -10,11 +10,11 @@
       <div class="index_elements">
             <div class="row justify-content-center">
                   @foreach ($homes as $home)
-                  <div class="card m-3" style="width: 18rem;">
+                  <div class="card m-3 text-center d-flex justify-content-center flex-column" style="width: 18rem;">
                         @if($home->cover_image)
                         <img class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
                         @else
-                        <div>Nessuna immagine</div>
+
                         @endif
                         <div class="card-body">
                               <h5 class="card-title">{{$home->title}}</h5>

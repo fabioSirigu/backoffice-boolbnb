@@ -21,20 +21,20 @@
             <label for="title" class="form-label">Title</label>
             <input type="text" name="title" id="title" class="form-control" placeholder="House Title" value="{{old('title')}}" aria-describedby="helpId" required>
         </div>
-        <div class="mb-3 d-flex gap-2">
-            <div>
+        <div class="mb-3 d-flex justify-content-between gap-3">
+            <div class="flex-grow-1">
                 <label for="rooms" class="form-label">Rooms</label>
                 <input type="number" name="rooms" id="rooms" class="form-control" placeholder="Number of rooms" value="{{old('rooms')}}" aria-describedby="helpId" required>
             </div>
-            <div>
+            <div class="flex-grow-1">
                 <label for="beds" class="form-label">Beds</label>
                 <input type="number" name="beds" id="beds" class="form-control" placeholder="Number of beds" value="{{old('beds')}}" aria-describedby="helpId" required>
             </div>
-            <div>
+            <div class="flex-grow-1">
                 <label for="bathrooms" class="form-label">Bathrooms</label>
                 <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Number of bathrooms" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
             </div>
-            <div>
+            <div class="flex-grow-1">
                 <label for="square_meters" class="form-label">Square Meters</label>
                 <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Square Meters" value="{{old('square_meters')}}" aria-describedby="helpId" required>
             </div>
@@ -45,9 +45,11 @@
             <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
+            <label for="latitude" class="form-label">Latitude</label>
             <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitudine" value="{{old('latitude')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
+            <label for="longitude" class="form-label">Longitude</label>
             <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Longitudine" value="{{old('longitude')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3 d-flex">

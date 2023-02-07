@@ -19,7 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $homes = Home::orderByDesc('id')->get();
+        $homes = Auth::user()->homes;
+        /* dd(Auth::user()->homes); */
+        /* $homes = Home::orderByDesc('id')->get(); */
         //dd($homes);
         return view('admin.homes.index', compact('homes'));
     }
@@ -85,7 +87,14 @@ class HomeController extends Controller
      */
     public function edit(Home $home)
     {
-        $homes = Home::all();
+        /* $homes = Auth::user()->homes;
+
+        if (!Auth::id() === ) {
+        } */
+
+        dd(Auth::user()->homes);
+
+        /* $homes = Home::all(); */
         return view('admin.homes.edit', compact('home'));
     }
 

@@ -75,8 +75,14 @@ class HomeController extends Controller
      */
     public function show(Home $home)
     {
-        $messages = Message::orderByDesc('id')->get();
-        return view('admin.homes.show', compact('home'));
+        if ($home->user_id === Auth::user()->id) {
+            $homes = Auth::user()->homes;
+            $messages = Message::orderByDesc('id')->get();
+            return view('admin.homes.show', compact('home'));
+        } else {
+            $homes = Auth::user()->homes;
+            return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");
+        }
     }
 
     /**

@@ -12,7 +12,7 @@ return [
         'address' => 'Via della Scala, 3, Firenze',
         'latitude' => '43.7732317',
         'longitude' => '11.2465212',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -26,7 +26,7 @@ return [
         'address' => 'Via delle Porte Nuove, 2, Firenze',
         'latitude' => '43.7799492',
         'longitude' => '11.2403348',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -40,7 +40,7 @@ return [
         'address' => 'Via Faenza, 71, Firenze',
         'latitude' => '43.777791',
         'longitude' => '11.251058',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -54,7 +54,7 @@ return [
         'address' => 'Via Rosina, 4, Firenze',
         'latitude' => '43.776646',
         'longitude' => '11.254669',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -68,7 +68,7 @@ return [
         'address' => 'Via Ricasoli, 39, Firenze',
         'latitude' => '43.776442',
         'longitude' => '11.258267',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -82,7 +82,7 @@ return [
         'address' => 'Via dei Servi, 15, Firenze',
         'latitude' => '43.774627',
         'longitude' => '11.2587816',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -96,7 +96,7 @@ return [
         'address' => 'Via del Castellaccio, 13, Firenze',
         'latitude' => '43.7752982',
         'longitude' => '11.2576016',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -110,7 +110,7 @@ return [
         'address' => 'Via della Pergola, 45, Firenze',
         'latitude' => '43.7749031',
         'longitude' => '11.262109',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -124,7 +124,7 @@ return [
         'address' => 'Via della Colonna, 11-5, Firenze',
         'latitude' => '43.7745931',
         'longitude' => '11.2645551',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -138,7 +138,7 @@ return [
         'address' => 'Via Giovan Battista Niccolini, 32, Firenze',
         'latitude' => '43.7731466',
         'longitude' => '11.2677746',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -152,7 +152,7 @@ return [
         'address' => 'Via Pietro Colletta, 2, Firenze',
         'latitude' => '43.7731466',
         'longitude' => '11.2677746',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -166,7 +166,7 @@ return [
         'address' => 'Via Luca Landucci, 34, Firenze',
         'latitude' => '43.7722675',
         'longitude' => '11.2754472',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -180,7 +180,7 @@ return [
         'address' => 'Via Giovanni Paisiello, 27, Firenze',
         'latitude' => '43.7817652',
         'longitude' => '11.2298328',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -194,7 +194,7 @@ return [
         'address' => 'Via delle Porte Nuove, 15/a, Firenze',
         'latitude' => '43.7792043',
         'longitude' => '11.238969',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -208,7 +208,7 @@ return [
         'address' => 'Via J. da Diacceto, 40, Firenze',
         'latitude' => '43.77849',
         'longitude' => '11.241015',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -222,7 +222,7 @@ return [
         'address' => 'Via Luigi Alamanni, 5, Firenze',
         'latitude' => '43.7769279',
         'longitude' => '11.2452965',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -236,7 +236,7 @@ return [
         'address' => 'Via del Alloro, 4, Firenze',
         'latitude' => '43.7739901',
         'longitude' => '11.2513614',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -250,7 +250,7 @@ return [
         'address' => 'Via dei Cerretani, 29 R, Firenze',
         'latitude' => '43.7733871',
         'longitude' => '11.2512322',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
     [
@@ -264,7 +264,7 @@ return [
         'address' => 'Via del Oriuolo, 66, Firenze',
         'latitude' => '43.771401',
         'longitude' => '11.2559798',
-        'cover_image' => 'uploads/7NiVgqsQbR6MKP48T49CeP9BLbTNNVWMJyK1TdAG.jpg',
+        'cover_image' => '',
         'visible' => true
     ],
 ];

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
+use App\Models\Message;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,6 +73,7 @@ class HomeController extends Controller
      */
     public function show(Home $home)
     {
+        $messages = Message::orderByDesc('id')->get();
         return view('admin.homes.show', compact('home'));
     }
 

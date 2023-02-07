@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('home_services', function (Blueprint $table) {
-            $table->unsignedBigInteger('homes_id');
-            $table->foreign('homes_id')->references('id')->on('homes')->cascadeOnDelete();
+        Schema::create('home_service', function (Blueprint $table) {
+            $table->unsignedBigInteger('home_id');
+            $table->foreign('home_id')->references('id')->on('home')->cascadeOnDelete();
 
 
-            $table->unsignedBigInteger('services_id');
-            $table->foreign('services_id')->references('id')->on('services')->cascadeOnDelete();
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('service')->cascadeOnDelete();
 
-            $table->primary(['homes_id', 'services_id']);
+            $table->primary(['home_id', 'service_id']);
         });
     }
 

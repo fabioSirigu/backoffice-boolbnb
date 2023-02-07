@@ -67,6 +67,20 @@
             </div>
         </div>
         <div class="mb-3">
+            <label for="services" class="form-label">Services</label>
+            <select multiple class="form-select form-select-sm" name="services[]" id="services">
+                <option value="" disabled>Select a Service</option>
+    
+    
+                @forelse ($services as $service)
+                <option value="{{$service->id}}" {{ in_array($service->id, old('services', [])) ? 'selected' : '' }}>{{$service->title}}</option>
+                @empty
+                <option value="" disabled>Sorry 😥 no services in the system</option>
+                @endforelse
+    
+            </select>
+        </div>
+        <div class="mb-3">
             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Aggiungi un'immagine" aria-describedby="coverImgHelper">
         </div>
         <button type="submit" class="btn btn-primary">Invia!</button>

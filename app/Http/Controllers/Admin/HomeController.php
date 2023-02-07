@@ -7,6 +7,7 @@ use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
 use App\Models\Message;
+use App\Models\Service;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('admin.homes.create');
+        $services = Service::all();
+        return view('admin.homes.create', compact('services'));
     }
 
     /**
@@ -60,9 +62,9 @@ class HomeController extends Controller
 
         $home = Home::create($val_data);
 
-        /* if ($request->has('technologies')) {
-            $home->technologies()->attach($val_data['technologies']);
-        } */
+        if ($request->has('services')) {
+            $home->services()->attach($val_data['services']);
+        }
 
         return to_route('admin.homes.index')->with('message', "The home: $home->title added successfully");
     }
@@ -96,7 +98,8 @@ class HomeController extends Controller
         /* dd($home->user_id); */
 
         if ($home->user_id === Auth::user()->id) {
-            return view('admin.homes.edit', compact('home'));
+            $services = Service::all();
+            return view('admin.homes.edit', compact('home', 'services'));
         } else {
             $homes = Auth::user()->homes;
             return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");
@@ -131,11 +134,11 @@ class HomeController extends Controller
         //$home = Home::create($val_data);
         $home->update($val_data);
 
-        /* if ($request->has('technologies')) {
-            $home->technologies()->sync($val_data['technologies']);
+        if ($request->has('services')) {
+            $home->services()->sync($val_data['services']);
         } else {
-            $home->technologies()->sync([]);
-        } */
+            $home->services()->sync([]);
+        }
 
         // return redirect()->route('admin.homes.index');
         return to_route('admin.homes.index')->with('message', "The home: $home->title update successfully");

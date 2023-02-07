@@ -44,12 +44,12 @@
             <label for="address" class="form-label">Address</label>
             <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
         </div>
-        <!-- <div class="mb-3">
+        <div class="mb-3">
             <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitudine" value="{{old('latitude')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3">
             <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Longitudine" value="{{old('longitude')}}" aria-describedby="helpId" required>
-        </div> -->
+        </div>
         <div class="mb-3 d-flex">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1">

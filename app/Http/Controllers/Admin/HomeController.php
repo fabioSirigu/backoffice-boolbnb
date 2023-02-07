@@ -87,7 +87,6 @@ class HomeController extends Controller
      */
     public function edit(Home $home)
     {
-
         /* dd($home->user_id); */
 
         if ($home->user_id === Auth::user()->id) {

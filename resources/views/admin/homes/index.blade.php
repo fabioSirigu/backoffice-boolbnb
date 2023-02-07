@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3" role="button">Add Home</a>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800 py-4">Homes</h1>

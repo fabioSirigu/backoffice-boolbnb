@@ -87,13 +87,8 @@ class HomeController extends Controller
                 $query->where('home_id', $home_id);
             })->get();
 
-            /* $home_id = $home->id;
-            $services = DB::table('services')->when($home_id, function ($query, $home_id) {
-                $query->where('home_id', $home_id);
-            })->get(); */
-
-
-            return view('admin.homes.show', compact('home', /* 'services', */ 'messages'));
+            $services = Service::all();
+            return view('admin.homes.show', compact('home', 'services', 'messages'));
         } else {
             $homes = Auth::user()->homes;
             return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");

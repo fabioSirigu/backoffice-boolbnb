@@ -32,7 +32,19 @@
                   <div>
                         <h3>Address: {{$home->address}}</h3>
                   </div>
-                  <!-- insert services  -->
+                  <div>
+                        <h3>Services:</h3>
+                        <ul>
+                              @forelse($services as $service)
+                              @if($home->services->contains($service->id))
+                              <li>{{$service->title}}</li>
+                              @else
+                              @endif
+                              @empty
+                              <h4>No services</h4>
+                              @endforelse
+                        </ul>
+                  </div>
                   <div>
                         <h3>Messages:</h3>
                         <ul>

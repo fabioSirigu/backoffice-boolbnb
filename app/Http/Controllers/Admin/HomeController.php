@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Home;
-use App\Http\Requests\StoreHomeRequest;
-use App\Http\Requests\UpdateHomeRequest;
 use App\Models\Message;
 use App\Models\Service;
+use App\Http\Requests\StoreHomeRequest;
+use App\Http\Requests\StoreMessageRequest;
+use App\Http\Requests\UpdateHomeRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -20,7 +22,7 @@ class HomeController extends Controller
      */
     public function index(Home $home)
     {
-        $homes = Auth::user()->homes;
+        $homes = Auth::user()->homes->sortDesc();
         /* dd(Auth::user()->homes); */
         /* $homes = Home::orderByDesc('id')->get(); */
         //dd($homes);
@@ -75,12 +77,23 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show(Home $home, Service $service, Message $message)
     {
         if ($home->user_id === Auth::user()->id) {
             $homes = Auth::user()->homes;
-            $messages = Message::orderByDesc('id')->get();
-            return view('admin.homes.show', compact('home'));
+
+            $home_id = $home->id;
+            $messages = DB::table('messages')->when($home_id, function ($query, $home_id) {
+                $query->where('home_id', $home_id);
+            })->get();
+
+            /* $home_id = $home->id;
+            $services = DB::table('services')->when($home_id, function ($query, $home_id) {
+                $query->where('home_id', $home_id);
+            })->get(); */
+
+
+            return view('admin.homes.show', compact('home', /* 'services', */ 'messages'));
         } else {
             $homes = Auth::user()->homes;
             return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");
@@ -134,11 +147,16 @@ class HomeController extends Controller
         //$home = Home::create($val_data);
         $home->update($val_data);
 
+
         if ($request->has('services')) {
             $home->services()->sync($val_data['services']);
         } else {
             $home->services()->sync([]);
         }
+
+        /* if (array_key_exists('services', $val_data)) {
+            $home->services()->sync($val_data['services']);
+        } */
 
         // return redirect()->route('admin.homes.index');
         return to_route('admin.homes.index')->with('message', "The home: $home->title update successfully");

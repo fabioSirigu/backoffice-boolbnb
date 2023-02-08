@@ -28,6 +28,7 @@ class StoreHomeRequest extends FormRequest
             'user_id' => 'nullable|exists:users, id',
             'slug' => 'max:255',
             'services' => 'exists:services,id',
+            'messages' => 'exists:messages,id',
             'rooms' => 'required|min:1',
             'beds' => 'required|min:1',
             'bathrooms' => 'required|min:1',

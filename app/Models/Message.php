@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Message extends Model
 {
 
-    protected $fillable = ['name', 'homes_id', 'email', 'message'];
+    protected $fillable = ['name', 'home_id', 'email', 'message'];
 
     /**
      * Get the type that owns the Project

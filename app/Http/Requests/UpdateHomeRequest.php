@@ -30,6 +30,9 @@ class UpdateHomeRequest extends FormRequest
                 Rule::unique('homes')->ignore($this->home->id),
             ],
             'user_id' => 'nullable|exists:users, id',
+            'services' => 'exists:services,id',
+            'messages' => 'exists:messages,id',
+
             'slug' => 'max:255',
             'rooms' => 'required|min:1',
             'beds' => 'required|min:1',

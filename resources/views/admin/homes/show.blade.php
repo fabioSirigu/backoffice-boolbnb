@@ -51,7 +51,7 @@
                               @forelse($messages as $message)
                               <li>
                                     <h3>{{$message->name }}</h3>
-                                    <h5>email: {{$message->email }}</h5>
+                                    <h5>Email: {{$message->email }}</h5>
                                     <p>
                                           {{ $message->message}}
                                     </p>

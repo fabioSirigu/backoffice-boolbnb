@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->unsignedBigInteger('homes_id')->nullabe()->after('id');
-            $table->foreign('homes_id')->references('id')->on('homes')->cascadeOnDelete();
+            $table->unsignedBigInteger('home_id')->nullabe()->after('id');
+            $table->foreign('home_id')->references('id')->on('homes')->cascadeOnDelete();
         });
     }
 
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->dropForeign('messages_homes_id_foreign');
+            $table->dropForeign('messages_home_id_foreign');
             $table->dropColumn('home_id');
         });
     }

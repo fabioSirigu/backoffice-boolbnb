@@ -18,7 +18,7 @@ class MessageSeeder extends Seeder
         $messages = config('homes_messages');
         foreach ($messages as $message) {
             $new_message = new Message();
-            $new_message->homes_id = $message['homes_id'];
+            $new_message->home_id = $message['home_id'];
             $new_message->name = $message['name'];
             $new_message->email = $message['email'];
             $new_message->message = $message['message'];

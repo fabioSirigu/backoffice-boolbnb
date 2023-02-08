@@ -66,6 +66,22 @@
                 </label>
             </div>
         </div>
+        <div class="mb-3">
+            <label for="services" class="form-label">Services</label>
+            <select multiple class="form-select form-select-sm" name="services[]" id="services">
+                <option value="" disabled>Select a Service</option>
+
+
+                @forelse ($services as $service)
+                <option value="{{$service->id}}" {{((is_array(old('services')) && in_array($service->id, old('services'))) || $home->services->contains($service->id)) ? 'selected' : ''}}>
+                    {{$service->title}}
+                </option>
+                @empty
+                <option value="" disabled>Sorry 😥 no services in the system</option>
+                @endforelse
+
+            </select>
+        </div>
         <div class="mb-3 d-flex align-items-center gap-4">
             <img width="200px" src="{{asset('storage/' . $home->cover_image)}}">
             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Aggiungi un'immagine" aria-describedby="coverImgHelper">

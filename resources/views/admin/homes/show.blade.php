@@ -32,6 +32,17 @@
                   <div>
                         <h3>Address: {{$home->address}}</h3>
                   </div>
+                  <!-- insert services  -->
+                  <div>
+                        <h3>Messages:</h3>
+                        <ul>
+                              @forelse($messages as $message)
+                              <li>{{$message->name }} scrive: {{ $message->message}}</li>
+                              @empty
+                              <h5>No messages found!</h5>
+                              @endforelse
+                        </ul>
+                  </div>
             </div>
       </div>
 

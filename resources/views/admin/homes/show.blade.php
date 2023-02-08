@@ -48,7 +48,6 @@
                   <div>
                         <h3>Messages:</h3>
                         <ul>
-
                               @forelse($messages as $message)
                               <li>
                                     <h3>{{$message->name }}</h3>

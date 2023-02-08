@@ -49,7 +49,13 @@
                         <h3>Messages:</h3>
                         <ul>
                               @forelse($messages as $message)
-                              <li>{{$message->name }} scrive: {{ $message->message}}</li>
+                              <li>
+                                    <h3>{{$message->name }}</h3>
+                                    <h5>email: {{$message->email }}</h5>
+                                    <p>
+                                          {{ $message->message}}
+                                    </p>
+                              </li>
                               @empty
                               <h5>No messages found!</h5>
                               @endforelse

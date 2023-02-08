@@ -12,6 +12,7 @@ use App\Http\Requests\UpdateHomeRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -48,6 +49,12 @@ class HomeController extends Controller
      */
     public function store(StoreHomeRequest $request)
     {
+        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/volterra.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu');
+
+        $jsonData = $response->json();
+
+        dd($jsonData);
+
         $val_data = $request->validated();
 
         if ($request->hasFile('cover_image')) {

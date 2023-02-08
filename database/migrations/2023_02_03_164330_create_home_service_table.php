@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('home_service', function (Blueprint $table) {
             $table->unsignedBigInteger('home_id');
-            $table->foreign('home_id')->references('id')->on('home')->onDelete()->unsigned();
+            $table->foreign('home_id')->references('id')->on('home')->cascadeOnDelete();
 
 
             $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('service')->onDelete()->unsigned();
+            $table->foreign('service_id')->references('id')->on('service')->cascadeOnDelete();
 
             $table->primary(['home_id', 'service_id']);
         });

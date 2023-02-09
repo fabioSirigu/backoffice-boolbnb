@@ -3,11 +3,11 @@
 @section('content')
 @if ($errors->any())
 <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+      <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+      </ul>
 </div>
 @endif
 <a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3" role="button">Add Home</a>

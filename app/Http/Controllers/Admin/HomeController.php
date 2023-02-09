@@ -54,7 +54,9 @@ class HomeController extends Controller
         // . 'qualcosa' .' '.'qualcosaqualcosa'
         $val_data = $request->validated();
 
-        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/' . $val_data['address'] . '.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu');
+        $api_key = '1W1nNbKly7WXl6NvYnr7983RJJawL26E';
+
+        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/' . $val_data['address'] . '.JSON?key=' . $api_key);
 
         $jsonData = $response->json();
 
@@ -137,6 +139,17 @@ class HomeController extends Controller
     public function update(UpdateHomeRequest $request, Home $home)
     {
         $val_data = $request->validated();
+
+        $api_key = '1W1nNbKly7WXl6NvYnr7983RJJawL26E';
+
+        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/' . $val_data['address'] . '.JSON?key=' . $api_key);
+
+        $jsonData = $response->json();
+
+        /* dd($jsonData['results'][0]['position']); */
+        $val_data['latitude'] = $jsonData['results'][0]['position']['lat'];
+        /* dd($val_data['latitude']); */
+        $val_data['longitude'] = $jsonData['results'][0]['position']['lon'];
 
         if ($request->hasFile('cover_image')) {
 

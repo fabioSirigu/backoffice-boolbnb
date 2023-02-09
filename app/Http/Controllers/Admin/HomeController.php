@@ -47,15 +47,21 @@ class HomeController extends Controller
      * @param  \App\Http\Requests\StoreHomeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHomeRequest $request)
+    public function store(StoreHomeRequest $request, Home $home)
     {
-        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/volterra.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu');
+        //pescare il valore di adress inserito nel form
+        //montare questo valore nella chiamata api
+        // . 'qualcosa' .' '.'qualcosaqualcosa'
+        $response = Http::withoutVerifying()->get("https://api.tomtom.com/search/2/search/volterra.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu");
 
         $jsonData = $response->json();
 
-        dd($jsonData);
-
+        /* dd($jsonData['results'][0]['position']); */
         $val_data = $request->validated();
+
+        $val_data['latitude'] = $jsonData['results'][0]['position']['lat'];
+        /* dd($val_data['latitude']); */
+        $val_data['longitude'] = $jsonData['results'][0]['position']['lon'];
 
         if ($request->hasFile('cover_image')) {
 

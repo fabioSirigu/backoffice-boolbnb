@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('bathrooms');
             $table->integer('square_meters');
             $table->string('address');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('cover_image');
             $table->boolean('visible')->default(true);
             $table->timestamps();

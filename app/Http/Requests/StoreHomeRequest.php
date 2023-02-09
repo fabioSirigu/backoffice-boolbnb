@@ -34,8 +34,8 @@ class StoreHomeRequest extends FormRequest
             'bathrooms' => 'required|min:1',
             'square_meters' => 'required|min:1',
             'address' => 'required|min:5|max:255',
-            'latitude' => 'required|min:1|max:100',
-            'longitude' => 'required|min:1|max:100',
+            'latitude' => 'nullable|min:1|max:100',
+            'longitude' => 'nullable|min:1|max:100',
             'cover_image' => 'required|image',
             'visible' => 'required'
         ];

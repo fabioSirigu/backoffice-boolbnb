@@ -44,14 +44,7 @@
             <label for="address" class="form-label">Address</label>
             <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
         </div>
-        <div class="mb-3">
-            <label for="latitude" class="form-label">Latitude</label>
-            <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitudine" value="{{old('latitude')}}" aria-describedby="helpId" required>
-        </div>
-        <div class="mb-3">
-            <label for="longitude" class="form-label">Longitude</label>
-            <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Longitudine" value="{{old('longitude')}}" aria-describedby="helpId" required>
-        </div>
+
         <div class="mb-3 d-flex">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1">
@@ -70,14 +63,14 @@
             <label for="services" class="form-label">Services</label>
             <select multiple class="form-select form-select-sm" name="services[]" id="services">
                 <option value="" disabled>Select a Service</option>
-    
-    
+
+
                 @forelse ($services as $service)
                 <option value="{{$service->id}}" {{ in_array($service->id, old('services', [])) ? 'selected' : '' }}>{{$service->title}}</option>
                 @empty
                 <option value="" disabled>Sorry 😥 no services in the system</option>
                 @endforelse
-    
+
             </select>
         </div>
         <div class="mb-3">

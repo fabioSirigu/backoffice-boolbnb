@@ -52,13 +52,13 @@ class HomeController extends Controller
         //pescare il valore di adress inserito nel form
         //montare questo valore nella chiamata api
         // . 'qualcosa' .' '.'qualcosaqualcosa'
-        $response = Http::withoutVerifying()->get("https://api.tomtom.com/search/2/search/volterra.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu");
+        $val_data = $request->validated();
+
+        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/' . $val_data['address'] . '.JSON?key=cMtc1bkXGMMZEoudzItb99x2PC8TfEtu');
 
         $jsonData = $response->json();
 
         /* dd($jsonData['results'][0]['position']); */
-        $val_data = $request->validated();
-
         $val_data['latitude'] = $jsonData['results'][0]['position']['lat'];
         /* dd($val_data['latitude']); */
         $val_data['longitude'] = $jsonData['results'][0]['position']['lon'];

@@ -56,8 +56,6 @@ class HomeController extends Controller
 
         $api_key = '1W1nNbKly7WXl6NvYnr7983RJJawL26E';
 
-
-
         $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/search/' . $val_data['address'] . '.JSON?key=' . $api_key);
 
         $jsonData = $response->json();

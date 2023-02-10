@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\api\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/homes', [HomeController::class, 'index']);
+Route::get('/homes/{home:slug}', [HomeController::class, 'show']);

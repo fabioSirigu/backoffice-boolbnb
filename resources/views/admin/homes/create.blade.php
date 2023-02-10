@@ -18,30 +18,30 @@
     <form action="{{route('admin.homes.store')}}" method="post" class="card p-3" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+            <label for="title" class="form-label">Title*</label>
             <input type="text" name="title" id="title" class="form-control" placeholder="House Title" value="{{old('title')}}" aria-describedby="helpId" required>
         </div>
         <div class="mb-3 d-flex justify-content-between gap-3">
             <div class="flex-grow-1">
-                <label for="rooms" class="form-label">Rooms</label>
+                <label for="rooms" class="form-label">Rooms*</label>
                 <input type="number" name="rooms" id="rooms" class="form-control" placeholder="Number of rooms" value="{{old('rooms')}}" aria-describedby="helpId" required>
             </div>
             <div class="flex-grow-1">
-                <label for="beds" class="form-label">Beds</label>
+                <label for="beds" class="form-label">Beds*</label>
                 <input type="number" name="beds" id="beds" class="form-control" placeholder="Number of beds" value="{{old('beds')}}" aria-describedby="helpId" required>
             </div>
             <div class="flex-grow-1">
-                <label for="bathrooms" class="form-label">Bathrooms</label>
+                <label for="bathrooms" class="form-label">Bathrooms*</label>
                 <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Number of bathrooms" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
             </div>
             <div class="flex-grow-1">
-                <label for="square_meters" class="form-label">Square Meters</label>
+                <label for="square_meters" class="form-label">Square Meters*</label>
                 <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Square Meters" value="{{old('square_meters')}}" aria-describedby="helpId" required>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label">Address*</label>
             <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
         </div>
 
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="services" class="form-label">Services</label>
+            <label for="services" class="form-label">Services*</label>
             <select multiple class="form-select form-select-sm" name="services[]" id="services">
                 <option value="" disabled>Select a Service</option>
 
@@ -76,6 +76,11 @@
         <div class="mb-3">
             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Aggiungi un'immagine" aria-describedby="coverImgHelper">
         </div>
+        <p>
+            <em>
+                I campi con * sono obbligatori!
+            </em>
+        </p>
         <button type="submit" class="btn btn-primary">Invia!</button>
     </form>
 </div>

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('slug');
-            $table->integer('rooms');
-            $table->integer('beds');
-            $table->integer('bathrooms');
-            $table->integer('square_meters');
+            $table->integer('rooms')->unsigned();
+            $table->integer('beds')->unsigned();
+            $table->integer('bathrooms')->unsigned();
+            $table->integer('square_meters')->unsigned();
             $table->string('address');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();

@@ -82,7 +82,7 @@
         </div>
         <p>
             <em>
-                I campi con * sono obbligatori!
+                * are required!
             </em>
         </p>
         <button type="submit" class="btn btn-primary">Invia!</button>

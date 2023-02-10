@@ -47,13 +47,13 @@
 
         <div class="mb-3 d-flex">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1">
+                <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1" checked>
                 <label class="form-check-label" for="flexRadioDefault1">
                     Visible
                 </label>
             </div>
             <div class="form-check px-5">
-                <input class="form-check-input" type="radio" name="visible" value="0" id="visible_0" checked>
+                <input class="form-check-input" type="radio" name="visible" value="0" id="visible_0">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>
@@ -78,7 +78,7 @@
         </div>
         <p>
             <em>
-                I campi con * sono obbligatori!
+                * are required!
             </em>
         </p>
         <button type="submit" class="btn btn-primary">Invia!</button>

@@ -74,6 +74,7 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="cover_image" class="form-label">Add A Cover Image*</label>
             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Aggiungi un'immagine" aria-describedby="coverImgHelper">
         </div>
         <p>

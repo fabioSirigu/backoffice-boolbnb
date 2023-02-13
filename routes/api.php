@@ -4,6 +4,8 @@ use App\Http\Controllers\api\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Home;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/homes', [HomeController::class, 'index']);
 Route::get('/homes/{home:slug}', [HomeController::class, 'show']);
+
+Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'searchHomes']);

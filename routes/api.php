@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Home;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/homes', [HomeController::class, 'index']);
 Route::get('/homes/{home:slug}', [HomeController::class, 'show']);
 
-Route::get('homes/filter', function (Request $request) {
-
-    $latitude = $request->input('latitude');
-    $longitude = $request->input('longitude');
-    $radius = 20; // 20 km
-
-    $filteredHomes = DB::table('homes')
-        ->select(DB::raw("*, ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( latitude ) ) ) ) AS distance"))
-        ->having('distance', '<', $radius)
-        ->get();
-
-    return response()->json($filteredHomes);
-});
+Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'searchHomes']);

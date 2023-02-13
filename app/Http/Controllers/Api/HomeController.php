@@ -12,10 +12,8 @@ class HomeController extends Controller
 
     public function searchHomes($latitude, $longitude, $radius)
     {
-
         $radius = 6371;
-
-        $filteredHomes = DB::select(DB::raw('SELECT *, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1 HAVING distance < ' . $radius . ' ORDER BY distance'));;
+        $filteredHomes = DB::select(DB::raw('SELECT *, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1 HAVING distance < 20 ORDER BY distance'));
 
         return response()->json([
             'result' => 'success',

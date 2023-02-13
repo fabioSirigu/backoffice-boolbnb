@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Home;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Auth\Guard\ApiGuard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,12 @@ Route::get('/homes', [HomeController::class, 'index']);
 Route::get('/homes/{home:slug}', [HomeController::class, 'show']);
 
 Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'searchHomes']);
+
+Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
+    if ($request->user()) {
+        $user = $request->user();
+        return response()->json(['data' => $user]);
+    } else {
+        return response()->json(['error' => 'Utente non autenticato']);
+    }
+});

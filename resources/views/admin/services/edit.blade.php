@@ -12,7 +12,7 @@
 @endif
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 py-4">Edit {{$service->title}}</h1>
+        <h1 class="h3 mb-0 text-gray-800 py-4">Modifica {{$service->title}}</h1>
     </div>
     <form action="{{route('admin.services.update', $service->slug)}}" method="post" class="card p-3" enctype="multipart/form-data">
         @csrf

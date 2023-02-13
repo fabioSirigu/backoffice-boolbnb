@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-<a href="{{route('admin.sponsored.create')}}" class="btn btn-primary my-3" role="button">Add Sponsored</a>
+<a href="{{route('admin.sponsored.create')}}" class="btn btn-primary my-3" role="button">Aggiungi Sponsorizzazione</a>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800 py-4">Sponsored</h1>
+      <h1 class="h3 mb-0 text-gray-800 py-4">Sponsorizzazioni</h1>
 </div>
 @include('partials.message')
 <div class="index_wrapper">
@@ -17,10 +17,10 @@
                               <div>Durata: {{$sponsored->duration}} h</div>
                               <div class="d-flex align-items-center justify-content-center">
                                     <a href="{{route('admin.sponsored.edit', $sponsored->slug)}}" class="btn btn-dark m-2">
-                                          Edit
+                                          Modifica
                                     </a>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSponsored-{{$sponsored->slug}}">
-                                          Delete
+                                          Cancella
                                     </button>
                                     @include('partials.sponsored-modal')
                               </div>

@@ -1,39 +1,36 @@
 @extends('layouts.admin')
 @section('content')
-<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Go Home</a>
+<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna alle case</a>
 <div class="container p-5">
       <div class="card text-left bg-dark text-light">
             <div class="card-body">
-                  <div class="id_home">
-                        <h3>Home id: {{$home->id}}</h3>
-                  </div>
                   @if($home->cover_image)
                   <img class="img-fluid" style="width:150px" src="{{asset('storage/' . $home->cover_image)}}" alt="">
                   @else
-                  <div class="placeholder p-5 bg-secondary" style="width:100px">Placeholder</div>
+                  <div class="placeholder p-5 bg-secondary" style="width:350px">Placeholder</div>
 
                   @endif
                   <div>
-                        <h1>Title: {{$home->title}}</h1>
+                        <h1>Nome: {{$home->title}}</h1>
                   </div>
                   <div>
-                        <h1>Rooms: {{$home->rooms}}</h1>
+                        <h1>Stanze: {{$home->rooms}}</h1>
                   </div>
 
                   <div>
-                        <h3>Beds: {{$home->beds}}</h3>
+                        <h3>Letti: {{$home->beds}}</h3>
                   </div>
                   <div>
-                        <h3>Bathrooms: {{$home->bathrooms}}</h3>
+                        <h3>Bagni: {{$home->bathrooms}}</h3>
                   </div>
                   <div>
-                        <h3>Sq: {{$home->square_meters}}</h3>
+                        <h3>Metri Quadrati: {{$home->square_meters}}</h3>
                   </div>
                   <div>
-                        <h3>Address: {{$home->address}}</h3>
+                        <h3>Indirizzo: {{$home->address}}</h3>
                   </div>
                   <div>
-                        <h3>Services:</h3>
+                        <h3>Servizi:</h3>
                         <ul>
                               @forelse($services as $service)
                               @if($home->services->contains($service->id))
@@ -41,12 +38,13 @@
                               @else
                               @endif
                               @empty
-                              <h4>No services</h4>
+                              <h4>Nessun servizio</h4>
                               @endforelse
+                              <!-- risolvere questo empty che non funziona -->
                         </ul>
                   </div>
                   <div>
-                        <h3>Messages:</h3>
+                        <h3>Messaggi:</h3>
                         <ul>
                               @forelse($messages as $message)
                               <li>
@@ -57,7 +55,7 @@
                                     </p>
                               </li>
                               @empty
-                              <h5>No messages found!</h5>
+                              <h5>Nessun messaggio per questa casa.</h5>
                               @endforelse
                         </ul>
                   </div>

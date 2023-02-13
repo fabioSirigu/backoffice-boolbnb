@@ -14,11 +14,11 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Accesso effettuato!') }}
                 </div>
             </div>
             <div class="link-homes">
-                <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button">View All Homes</a>
+                <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button">Vai alle Case</a>
 
             </div>
         </div>

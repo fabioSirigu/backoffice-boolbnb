@@ -43,8 +43,18 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="address" class="form-label">Indirizzo*</label>
-            <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address', $home->address)}}" aria-describedby="helpId" required>
+            <div class="d-flex">
+                <div class="w-50">
+                    <label v-model="address" for="address" class="form-label">Indirizzo*</label>
+                    <input type="text" name="address" id="address" class="form-control" placeholder="Indirizzo, Numero Civico" value="{{old('address', $home->address)}}" aria-describedby="helpId" required>
+                </div>
+
+                <div class="mx-2 flex-grow-1" id="results">
+                    <label v-model="address" for="address" class="form-label">Seleziona l'indirizzo corretto</label>
+
+                    <select id="address-options" class="form-select" aria-label="Default select example"></select>
+                </div>
+            </div>
         </div>
         <div class="mb-3 d-flex">
             <div class="form-check">
@@ -91,4 +101,35 @@
         <button type="submit" class="btn btn-primary">Invia!</button>
     </form>
 </div>
+<!-- <script src="{{asset('/js/autocomplete.js')}}"></script> -->
+<script>
+    const API_KEY = "Tch0NAfmIoUvMhD8OyuIvJnGGUrV2269";
+
+    var searchInput = document.getElementById("address");
+    var resultsContainer = document.getElementById("address-options");
+
+    searchInput.addEventListener("input", function(e) {
+        const searchTerm = e.target.value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}&limit=5`, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                const searchResults = JSON.parse(xhr.responseText);
+
+                resultsContainer.innerHTML = "";
+                for (const result of searchResults.results) {
+                    const resultOption = document.createElement("option");
+                    resultOption.value = result.address.freeformAddress;
+                    resultOption.innerText = result.address.freeformAddress;
+                    resultsContainer.appendChild(resultOption);
+                }
+            }
+        };
+        xhr.send();
+    });
+    resultsContainer.addEventListener("change", function(e) {
+        searchInput.value = e.target.value;
+    });
+</script>
 @endsection

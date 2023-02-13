@@ -20,30 +20,40 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Nome*</label>
-                <input type="text" name="title" id="title" class="form-control" placeholder="House Title" value="{{old('title')}}" aria-describedby="helpId" required>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Inserisci un titolo" value="{{old('title')}}" aria-describedby="helpId" required>
             </div>
             <div class="mb-3 d-flex justify-content-between gap-3">
                 <div class="flex-grow-1">
                     <label for="rooms" class="form-label">Stanze*</label>
-                    <input type="number" name="rooms" id="rooms" class="form-control" placeholder="Number of rooms" value="{{old('rooms')}}" aria-describedby="helpId" required>
+                    <input type="number" name="rooms" id="rooms" class="form-control" placeholder="Numero di stanze" value="{{old('rooms')}}" aria-describedby="helpId" required>
                 </div>
                 <div class="flex-grow-1">
                     <label for="beds" class="form-label">Letti*</label>
-                    <input type="number" name="beds" id="beds" class="form-control" placeholder="Number of beds" value="{{old('beds')}}" aria-describedby="helpId" required>
+                    <input type="number" name="beds" id="beds" class="form-control" placeholder="Numero di letti" value="{{old('beds')}}" aria-describedby="helpId" required>
                 </div>
                 <div class="flex-grow-1">
                     <label for="bathrooms" class="form-label">Bagni*</label>
-                    <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Number of bathrooms" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
+                    <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Numero di bagni" value="{{old('bathrooms')}}" aria-describedby="helpId" required>
                 </div>
                 <div class="flex-grow-1">
                     <label for="square_meters" class="form-label">Metri Quadrati*</label>
-                    <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Square Meters" value="{{old('square_meters')}}" aria-describedby="helpId" required>
+                    <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Metri Quadri" value="{{old('square_meters')}}" aria-describedby="helpId" required>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label v-model="address" for="address" class="form-label">indirizzo*</label>
-                <input type="text" name="address" id="address" class="form-control address" placeholder="Indirizzo, Numero Civico" value="{{old('address')}}" aria-describedby="helpId" required>
+                <div class="d-flex">
+                    <div class="w-50">
+                        <label v-model="address" for="address" class="form-label">Indirizzo*</label>
+                        <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" required>
+                    </div>
+
+                    <div class="mx-2 flex-grow-1" id="results">
+                        <label v-model="address" for="address" class="form-label">Seleziona l'indirizzo corretto</label>
+
+                        <select id="address-options" class="form-select" aria-label="Default select example"></select>
+                    </div>
+                </div>
             </div>
 
             <div class="mb-3 d-flex">
@@ -87,4 +97,35 @@
         </form>
     </div>
 </div>
+<!-- <script src="{{asset('/js/autocomplete.js')}}"></script> -->
+<script>
+    const API_KEY = "Tch0NAfmIoUvMhD8OyuIvJnGGUrV2269";
+
+    var searchInput = document.getElementById("address");
+    var resultsContainer = document.getElementById("address-options");
+
+    searchInput.addEventListener("input", function(e) {
+        const searchTerm = e.target.value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}`, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                const searchResults = JSON.parse(xhr.responseText);
+
+                resultsContainer.innerHTML = "";
+                for (const result of searchResults.results) {
+                    const resultOption = document.createElement("option");
+                    resultOption.value = result.address.freeformAddress;
+                    resultOption.innerText = result.address.freeformAddress;
+                    resultsContainer.appendChild(resultOption);
+                }
+            }
+        };
+        xhr.send();
+    });
+    resultsContainer.addEventListener("change", function(e) {
+        searchInput.value = e.target.value;
+    });
+</script>
 @endsection

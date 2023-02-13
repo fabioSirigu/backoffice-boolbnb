@@ -20,11 +20,15 @@
             <div class="row justify-content-center">
                   @foreach ($homes as $home)
                   <div class="card m-3 text-center d-flex justify-content-center flex-column" style="width: 18rem;">
-                        @if($home->cover_image)
-                        <img class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
-                        @else
+                        <div class="card-img mt-2">
 
-                        @endif
+                              @if($home->cover_image)
+                              <img class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
+                              @else
+                              <img src="/img/placeholder_600.png" alt="" class="img-fluid">
+
+                              @endif
+                        </div>
                         <div class="card-body">
                               <h5 class="card-title">{{$home->title}}</h5>
                               <p class="card-text">{{$home->content}}</p>

@@ -99,10 +99,11 @@
     const API_KEY = "Tch0NAfmIoUvMhD8OyuIvJnGGUrV2269";
 
     var searchInput = document.getElementById("address");
-    var resultsContainer = document.getElementById("address-dropdown");
+    var dropdownContainer = document.getElementById("address-dropdown");
 
-    searchInput.addEventListener("input", function(e) {
-        const searchTerm = e.target.value;
+    searchInput.addEventListener("input", function(input) {
+        /* console.log(e); */
+        const searchTerm = input.target.value;
 
         const xhr = new XMLHttpRequest();
         xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}`, true);
@@ -110,31 +111,31 @@
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 const searchResults = JSON.parse(xhr.responseText);
 
-                resultsContainer.innerHTML = "";
+                dropdownContainer.innerHTML = "";
                 for (const result of searchResults.results) {
-                    const resultOption = document.createElement("button");
-                    resultOption.className = "dropdown-item";
-                    resultOption.type = "button";
-                    resultOption.innerText = result.address.freeformAddress;
-                    resultOption.addEventListener("click", function() {
+                    const dropdownItem = document.createElement("div");
+                    dropdownItem.classList.add("dropdown-item");
+                    dropdownItem.innerText = result.address.freeformAddress;
+                    dropdownItem.addEventListener("click", function() {
                         searchInput.value = result.address.freeformAddress;
-                        resultsContainer.innerHTML = "";
+                        dropdownContainer.classList.remove("show");
                     });
-                    resultsContainer.appendChild(resultOption);
+                    dropdownContainer.appendChild(dropdownItem);
                 }
-
                 if (searchResults.results.length > 0) {
-                    resultsContainer.classList.add("show");
+                    dropdownContainer.classList.add("show");
                 } else {
-                    resultsContainer.classList.remove("show");
+                    dropdownContainer.classList.remove("show");
                 }
             }
         };
         xhr.send();
     });
 
-    searchInput.addEventListener("blur", function() {
-        resultsContainer.classList.remove("show");
+    document.addEventListener("click", function(e) {
+        if (!searchInput.contains(e.target)) {
+            dropdownContainer.classList.remove("show");
+        }
     });
 </script>
 @endsection

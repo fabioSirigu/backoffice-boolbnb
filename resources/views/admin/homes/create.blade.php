@@ -43,10 +43,10 @@
 
             <div class="mb-3">
                 <div class="d-flex">
-                    <div class="w-50">
+                    <div class="w-100">
                         <label v-model="address" for="address" class="form-label">Indirizzo*</label>
                         <div class="position-relative">
-                            <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" required>
+                            <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" autocomplete="off" required>
                             <div id="address-dropdown" class="dropdown-menu" aria-labelledby="address"></div>
                         </div>
                     </div>

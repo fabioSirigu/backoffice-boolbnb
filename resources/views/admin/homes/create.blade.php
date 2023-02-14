@@ -40,22 +40,17 @@
                     <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Metri Quadri" value="{{old('square_meters')}}" aria-describedby="helpId" required>
                 </div>
             </div>
-
             <div class="mb-3">
                 <div class="d-flex">
-                    <div class="w-50">
+                    <div class="w-100">
                         <label v-model="address" for="address" class="form-label">Indirizzo*</label>
-                        <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" required>
-                    </div>
-
-                    <div class="mx-2 flex-grow-1" id="results">
-                        <label v-model="address" for="address" class="form-label">Seleziona l'indirizzo corretto</label>
-
-                        <select id="address-options" class="form-select" aria-label="Default select example"></select>
+                        <div class="position-relative">
+                            <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" autocomplete="off" required>
+                            <div id="address-dropdown" class="dropdown-menu" aria-labelledby="address"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="mb-3 d-flex">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1" checked>
@@ -102,30 +97,43 @@
     const API_KEY = "Tch0NAfmIoUvMhD8OyuIvJnGGUrV2269";
 
     var searchInput = document.getElementById("address");
-    var resultsContainer = document.getElementById("address-options");
+    var dropdownContainer = document.getElementById("address-dropdown");
 
-    searchInput.addEventListener("input", function(e) {
-        const searchTerm = e.target.value;
+    searchInput.addEventListener("input", function(input) {
+        /* console.log(e); */
+        const searchTerm = input.target.value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}`, true);
+        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}&typeahead=true&countrySet=IT&language=it-IT`, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 const searchResults = JSON.parse(xhr.responseText);
 
-                resultsContainer.innerHTML = "";
+                dropdownContainer.innerHTML = "";
                 for (const result of searchResults.results) {
-                    const resultOption = document.createElement("option");
-                    resultOption.value = result.address.freeformAddress;
-                    resultOption.innerText = result.address.freeformAddress;
-                    resultsContainer.appendChild(resultOption);
+                    const dropdownItem = document.createElement("div");
+                    dropdownItem.classList.add("dropdown-item");
+                    dropdownItem.innerText = result.address.freeformAddress;
+                    dropdownItem.addEventListener("click", function() {
+                        searchInput.value = result.address.freeformAddress;
+                        dropdownContainer.classList.remove("show");
+                    });
+                    dropdownContainer.appendChild(dropdownItem);
+                }
+                if (searchResults.results.length > 0) {
+                    dropdownContainer.classList.add("show");
+                } else {
+                    dropdownContainer.classList.remove("show");
                 }
             }
         };
         xhr.send();
     });
-    resultsContainer.addEventListener("change", function(e) {
-        searchInput.value = e.target.value;
+
+    document.addEventListener("click", function(e) {
+        if (!searchInput.contains(e.target)) {
+            dropdownContainer.classList.remove("show");
+        }
     });
 </script>
 @endsection

@@ -13,12 +13,23 @@ class HomeController extends Controller
     public function searchHomes($latitude, $longitude, $radius, Request $request)
     {
         $rooms = $request->input('rooms');
+        $services = $request->input('services');
+        $servicesArray = explode(',', $services);
 
-        $filteredHomes = DB::select(DB::raw('SELECT *, ( 6371 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1' . ($rooms ? ' AND rooms=' . $rooms : '') . ' HAVING distance < 20 ORDER BY distance'));
+        $filteredHomes = DB::select(DB::raw('SELECT *, ( 6371 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1' . ($rooms ? ' AND rooms=' . $rooms : '') . ($services ? ' AND (' . implode(' OR ', array_fill(0, count($servicesArray), 'services LIKE ?')) . ')' : '') . ' HAVING distance < 20 ORDER BY distance'), $servicesArray);
 
         return response()->json([
             'result' => 'success',
             'data' => $filteredHomes,
+        ]);
+    }
+
+    public function getServices()
+    {
+        $services = DB::table('services')->get();
+        return response()->json([
+            'result' => 'success',
+            'data' => $services,
         ]);
     }
 

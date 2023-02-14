@@ -31,6 +31,8 @@ Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'sea
 
 Route::get('/services', [HomeController::class, 'getServices']);
 
+Route::get('/search/{latitude}/{logitude}/{radius}', [HomeController::class, 'search'])->name('search');
+
 Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
     if ($request->user()) {
         $user = $request->user();

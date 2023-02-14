@@ -45,13 +45,10 @@
                 <div class="d-flex">
                     <div class="w-50">
                         <label v-model="address" for="address" class="form-label">Indirizzo*</label>
-                        <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" required>
-                    </div>
-
-                    <div class="mx-2 flex-grow-1" id="results">
-                        <label v-model="address" for="address" class="form-label">Seleziona l'indirizzo corretto</label>
-
-                        <select id="address-options" class="form-select" aria-label="Default select example"></select>
+                        <div class="position-relative">
+                            <input type="text" name="address" id="address" class="form-control address" placeholder="Città, Indirizzo, CAP..." value="{{old('address')}}" aria-describedby="helpId" required>
+                            <div id="address-dropdown" class="dropdown-menu" aria-labelledby="address"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,7 +99,7 @@
     const API_KEY = "Tch0NAfmIoUvMhD8OyuIvJnGGUrV2269";
 
     var searchInput = document.getElementById("address");
-    var resultsContainer = document.getElementById("address-options");
+    var resultsContainer = document.getElementById("address-dropdown");
 
     searchInput.addEventListener("input", function(e) {
         const searchTerm = e.target.value;
@@ -115,17 +112,29 @@
 
                 resultsContainer.innerHTML = "";
                 for (const result of searchResults.results) {
-                    const resultOption = document.createElement("option");
-                    resultOption.value = result.address.freeformAddress;
+                    const resultOption = document.createElement("button");
+                    resultOption.className = "dropdown-item";
+                    resultOption.type = "button";
                     resultOption.innerText = result.address.freeformAddress;
+                    resultOption.addEventListener("click", function() {
+                        searchInput.value = result.address.freeformAddress;
+                        resultsContainer.innerHTML = "";
+                    });
                     resultsContainer.appendChild(resultOption);
+                }
+
+                if (searchResults.results.length > 0) {
+                    resultsContainer.classList.add("show");
+                } else {
+                    resultsContainer.classList.remove("show");
                 }
             }
         };
         xhr.send();
     });
-    resultsContainer.addEventListener("change", function(e) {
-        searchInput.value = e.target.value;
+
+    searchInput.addEventListener("blur", function() {
+        resultsContainer.classList.remove("show");
     });
 </script>
 @endsection

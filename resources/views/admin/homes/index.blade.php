@@ -10,9 +10,16 @@
       </ul>
 </div>
 @endif
-<a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3" role="button">Aggiungi Una Casa</a>
+<a href="{{ url('admin') }}" class="btn btn-primary my-2">
+      <i class="fas fa-angle-left fa-fw"></i> Torna alla Dashboard
+</a>
+<h1 class="h3 mb-0 text-gray-800 py-4">Le Tue Case</h1>
+<div class="d-inline-block">
+      <a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3 d-flex align-items-center" role="button">
+            <i style="font-size: 40px;" class="fa-solid fa-square-plus me-2"></i> Aggiungi Una Casa
+      </a>
+</div>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800 py-4">Le Tue Case</h1>
 </div>
 @include('partials.message')
 <div class="index_wrapper">
@@ -21,7 +28,6 @@
                   @foreach ($homes as $home)
                   <div class="card m-3 text-center d-flex justify-content-center flex-column" style="width: 18rem;">
                         <div class="card-img mt-2">
-
                               @if($home->cover_image)
                               <img class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
                               @else
@@ -50,7 +56,4 @@
             </div>
       </div>
 </div>
-
-
-
 @endsection

@@ -10,14 +10,14 @@
       </ul>
 </div>
 @endif
-<a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3" role="button">Aggiungi Case</a>
+<a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3" role="button">Aggiungi Una Casa</a>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800 py-4">Case</h1>
+      <h1 class="h3 mb-0 text-gray-800 py-4">Le Tue Case</h1>
 </div>
 @include('partials.message')
 <div class="index_wrapper">
       <div class="index_elements">
-            <div class="row justify-content-center">
+            <div class="row justify-content-around">
                   @foreach ($homes as $home)
                   <div class="card m-3 text-center d-flex justify-content-center flex-column" style="width: 18rem;">
                         <div class="card-img mt-2">

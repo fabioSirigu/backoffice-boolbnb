@@ -5,7 +5,7 @@
     <div class="container py-5">
         <h2><img src="/img/logoBnBlateral.png" alt="" class="logo_lateral"></h2>
         @if (Auth::user())
-        <h1>Benvenuto <strong>{{ Auth::user()->name }} </strong> in BoolBnB</h1>
+        <h1>Ciao <strong>{{ Auth::user()->name }} </strong>, benvenuto in BoolBnB !</h1>
         @else
         <h1>Benvenuto in BoolBnB, accedi o registrati!</h1>
         @endif

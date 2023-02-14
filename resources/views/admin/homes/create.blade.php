@@ -40,7 +40,6 @@
                     <input type="number" name="square_meters" id="square_meters" class="form-control" placeholder="Metri Quadri" value="{{old('square_meters')}}" aria-describedby="helpId" required>
                 </div>
             </div>
-
             <div class="mb-3">
                 <div class="d-flex">
                     <div class="w-100">
@@ -52,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="mb-3 d-flex">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="visible" value="1" id="visible_1" checked>
@@ -106,7 +104,7 @@
         const searchTerm = input.target.value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}`, true);
+        xhr.open("GET", `https://api.tomtom.com/search/2/search/${searchTerm}.json?key=${API_KEY}&typeahead=true&countrySet=IT&language=it-IT`, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 const searchResults = JSON.parse(xhr.responseText);

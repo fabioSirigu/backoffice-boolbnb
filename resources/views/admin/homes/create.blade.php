@@ -12,7 +12,9 @@
 @endif
 <div id="app" class="div">
     <div class="container">
-        <a href="{{route('admin.homes.index')}}" class="btn btn-primary my-3" role="button">Torna indietro</a>
+        <a href="{{ route('admin.homes.index') }}" class="btn btn-primary my-2">
+            <i class="fas fa-angle-left fa-fw"></i> Torna Indietro
+        </a>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 py-4">Aggiungi una casa</h1>
         </div>

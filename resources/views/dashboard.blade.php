@@ -18,8 +18,14 @@
                 </div>
             </div>
             <div class="link-homes">
-                <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button">Vai alle Case</a>
-
+                <a class="btn btn-primary mt-4" href="{{ url('http://localhost:5174/') }}" role="button">
+                    <i class="fas fa-angle-left fa-fw"></i> Torna Al Sito
+                </a>
+            </div>
+            <div class="link-homes">
+                <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button">
+                    Area Personale <i class="fas fa-angle-right fa-fw"></i>
+                </a>
             </div>
         </div>
     </div>

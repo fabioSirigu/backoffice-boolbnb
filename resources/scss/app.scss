@@ -8,11 +8,11 @@
 #app {
 
       nav {
-            height: 120px;
+            height: 90px;
       }
 
       .jumbotron {
-            height: calc(100vh - 120px);
+            height: calc(100vh - 90px);
             background-image: url(img/alternating-arrowhead.png);
 
             .logo_lateral {

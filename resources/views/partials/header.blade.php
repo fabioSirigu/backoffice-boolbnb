@@ -6,7 +6,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto d-flex align-items-center">
                               <li class="nav-item">
-                                    <img src="/img/favicon.png" alt="" class="favicon">
+                                    <img src="/img/logoBnBlateral.png" alt="" class="logo">
                               </li>
                         </ul>
 
@@ -45,3 +45,9 @@
             </div>
       </nav>
 </header>
+
+<style scoped lang="scss">
+      .logo {
+            width: 100px;
+      }
+</style>

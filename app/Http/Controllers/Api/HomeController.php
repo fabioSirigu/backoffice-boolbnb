@@ -36,6 +36,35 @@ class HomeController extends Controller
         ]);
     }
 
+    public function filterHomes($latitude, $longitude, $radius)
+    {
+        $radius = 6371;
+
+        // Recupera i parametri di query dalla richiesta
+        $rooms = request()->query('rooms');
+        $services = request()->query('services');
+
+        $query = 'SELECT *, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1';
+
+        if ($rooms) {
+            $query .= ' AND rooms = ' . $rooms;
+        }
+
+        if ($services) {
+            // Esempio di filtro per servizi, aggiungi la logica specifica ai tuoi servizi
+            $query .= ' AND services LIKE "%' . $services . '%"';
+        }
+
+        $query .= ' HAVING distance < 20 ORDER BY distance';
+
+        $filteredHomes = DB::select(DB::raw($query));
+
+        return response()->json([
+            'result' => 'success',
+            'data' => $filteredHomes,
+        ]);
+    }
+
     public function getServices()
     {
         $services = DB::table('services')->get();

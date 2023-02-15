@@ -26,7 +26,7 @@ class StoreMessageRequest extends FormRequest
         return [
             'home_id' => 'required',
             'name' => 'required',
-            'email' => 'required|email|max:255',
+            'email' => 'required',
             'message' => 'required'
         ];
     }

@@ -36,13 +36,13 @@ class HomeController extends Controller
         ]);
     }
 
-    public function filterHomes($latitude, $longitude, $radius)
+    public function filterHomes(Request $request, $latitude, $longitude, $radius)
     {
         $radius = 6371;
 
         // Recupera i parametri di query dalla richiesta
-        $rooms = request()->query('rooms');
-        $services = request()->query('services');
+        $rooms = $request->query('rooms');
+        $services = $request->query('services');
 
         $query = 'SELECT *, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1';
 
@@ -51,13 +51,15 @@ class HomeController extends Controller
         }
 
         if ($services) {
-            // Esempio di filtro per servizi, aggiungi la logica specifica ai tuoi servizi
-            $query .= ' AND services LIKE "%' . $services . '%"';
+            // Costruisci la clausola WHERE usando l'operatore IN
+            $servicesArray = explode(',', $services);
+            $servicesInClause = implode(',', array_fill(0, count($servicesArray), '?'));
+            $query .= ' AND service_id IN (' . $servicesInClause . ')';
         }
 
         $query .= ' HAVING distance < 20 ORDER BY distance';
 
-        $filteredHomes = DB::select(DB::raw($query));
+        $filteredHomes = DB::select(DB::raw($query), $servicesArray ?? []);
 
         return response()->json([
             'result' => 'success',

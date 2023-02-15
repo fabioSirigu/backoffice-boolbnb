@@ -13,18 +13,12 @@ class MessageController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
-
-        $validator = Validator::make(
-            $data,
-            [
-                'home_id' => 'required',
-                'name' => 'required',
-                'email' => 'required|email|max:255',
-                'message' => 'required',
-            ],
-        );
-
+        $validator = Validator::make($data, [
+            'home_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|max:255',
+            'message' => 'required',
+        ]);
 
         if ($validator->fails()) {
             return response()->json([
@@ -33,19 +27,16 @@ class MessageController extends Controller
             ]);
         }
 
-
-        $newMessage  = new Message();
-        if (!empty($data['object'])) {
-            $newMessage->object = $data['object'];
-        }
-        $newMessage->home_id = $data['home_id'];
-        $newMessage->name = $data['name'];
-        $newMessage->email = $data['email'];
-        $newMessage->message = $data['message'];
-        $newMessage->save();
+        $message = new Message();
+        $message->home_id = $data['home_id'];
+        $message->name = $data['name'];
+        $message->email = $data['email'];
+        $message->message = $data['message'];
+        $message->save();
 
         return response()->json([
-            "success" => true
+            'success' => true,
+            'data' => $message
         ]);
     }
 }

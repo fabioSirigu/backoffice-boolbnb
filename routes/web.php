@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/api/messages', 'MessageController@store');
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

@@ -43,3 +43,5 @@ Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
         return response()->json(['error' => 'Utente non autenticato']);
     }
 });
+
+Route::post('/messages', [MessageController::class, 'store']);

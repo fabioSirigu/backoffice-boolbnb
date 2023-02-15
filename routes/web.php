@@ -38,6 +38,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('sponsored', SponsoredController::class)->parameters([
         'sponsored' => 'sponsored:slug'
     ]);
+
+    Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy']);
 });
 
 

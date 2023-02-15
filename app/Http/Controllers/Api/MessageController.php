@@ -16,7 +16,7 @@ class MessageController extends Controller
         $validator = Validator::make($data, [
             'home_id' => 'required',
             'name' => 'required',
-            'email' => 'required|email|max:255',
+            'email' => 'required',
             'message' => 'required',
         ]);
 

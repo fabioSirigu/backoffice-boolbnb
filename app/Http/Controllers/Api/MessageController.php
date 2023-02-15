@@ -1,31 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Message;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Message;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'message' => 'required|string',
-        ]);
+        $data = $request->all();
 
-        $message = new Message();
-        $message->name = $validatedData['name'];
-        $message->email = $validatedData['email'];
-        $message->message = $validatedData['message'];
+        dd($data);
 
-        if ($request->user()) {
-            $message->user_id = $request->user()->id;
+        $validator = Validator::make(
+            $data,
+            [
+                'home_id' => 'required',
+                'name' => 'required',
+                'email' => 'required|email|max:255',
+                'message' => 'required',
+            ],
+        );
+
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
         }
 
-        $message->save();
 
-        return response()->json(['success' => true, 'data' => $message]);
+        $newMessage  = new Message();
+        if (!empty($data['object'])) {
+            $newMessage->object = $data['object'];
+        }
+        $newMessage->home_id = $data['home_id'];
+        $newMessage->name = $data['name'];
+        $newMessage->email = $data['email'];
+        $newMessage->message = $data['message'];
+        $newMessage->save();
+
+        return response()->json([
+            "success" => true
+        ]);
     }
 }

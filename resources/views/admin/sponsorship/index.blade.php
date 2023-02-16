@@ -1,8 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
+<div>
+    <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
 
-<div class="index_wrapper">
+    <h1 class="mt-3 text-center">
+        Scegli il tipo di sponsorizzazione
+    </h1>
+</div>
+
+<div class="index_wrapper mt-4">
     <div class="index_elements">
         <div class="row justify-content-center">
             @foreach ($sponsoreds as $sponsored)

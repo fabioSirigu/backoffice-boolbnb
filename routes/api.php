@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Guard\ApiGuard;
 use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\Api\Payments\PaymentController;
+use App\Http\Controllers\Api\Sponsoreds\SponsoredController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +48,7 @@ Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
 });
 
 Route::post('/messages', [MessageController::class, 'store']);
+
+Route::get('sponsoreds', [SponsoredController::class, 'index']);
+Route::get('orders/generate', [PaymentController::class, 'generate']);
+Route::post('orders/make/payment', [PaymentController::class, 'makePayment']);

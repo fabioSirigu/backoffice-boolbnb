@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale'</a>
+<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
 
 <div class="container my-3">
       <div class="row align-items-center">

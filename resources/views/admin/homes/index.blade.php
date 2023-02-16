@@ -38,18 +38,24 @@
                         <div class="card-body">
                               <h5 class="card-title">{{$home->title}}</h5>
                               <p class="card-text">{{$home->content}}</p>
-                              <div class="d-flex align-items-center justify-content-center">
+                              <div class="d-flex align-items-center justify-content-between">
                                     <a class="btn btn-primary" href="{{route('admin.homes.show', $home->slug)}}">
-                                          Visualizzza
+                                          Visualizza
                                     </a>
-                                    <a href="{{route('admin.homes.edit', $home->slug)}}" class="btn btn-dark m-2">
+                                    <a href="{{route('admin.homes.edit', $home->slug)}}" class="btn btn-dark">
                                           Modifica
                                     </a>
                               </div>
-                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteHome-{{$home->slug}}">
-                                    Cancella
-                              </button>
-                              @include('partials.homes-modal')
+                              <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <a class="btn btn-warning" href="{{route('admin.sponsorship.index')}}">
+                                          Sponsorizza
+                                    </a>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteHome-{{$home->slug}}">
+                                          Cancella
+                                    </button>
+                                    @include('partials.homes-modal')
+                              </div>
+
                         </div>
                   </div>
                   @endforeach

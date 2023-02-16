@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SponsoredController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\admin\SponsorshipController;
 
 
 /*
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     ]);
 
     Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy']);
+
+    Route::resource('sponsorship', SponsorshipController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
 });
 
 

@@ -2,10 +2,10 @@
 
 return [
     [
-        'title' => 'Silver Sponsorship',
+        'title' => 'Platinum Sponsorship',
         'slug' => '',
-        'price' => '2.99',
-        'duration' => '24'
+        'price' => '9.99',
+        'duration' => '144'
     ],
     [
         'title' => 'Gold Sponsorship',
@@ -14,9 +14,10 @@ return [
         'duration' => '72'
     ],
     [
-        'title' => 'Platinum Sponsorship',
+
+        'title' => 'Silver Sponsorship',
         'slug' => '',
-        'price' => '9.99',
-        'duration' => '144'
+        'price' => '2.99',
+        'duration' => '24'
     ]
 ];

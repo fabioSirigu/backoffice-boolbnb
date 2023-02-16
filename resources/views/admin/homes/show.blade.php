@@ -46,21 +46,50 @@
                               </ul>
                         </div>
                         <div>
-                              <h3>Messaggi:</h3>
-                              <ul>
-                                    @forelse($messages as $message)
-                                    <li>
-                                          <h3>{{$message->name }}</h3>
-                                          <h5>{{$message->email}}</h5>
-                                          <p>{{ $message->message}}</p>
-                                    </li>
-                                    @empty
-                                    <h5>Nessun messaggio per questa casa.</h5>
-                                    @endforelse
-                              </ul>
+                              <h2 class="bold mt-3">Messaggi dagli utenti:</h2>
+                              @forelse($messages as $message)
+
+                              <div class="card card-message w-50 my-2 p-2">
+                                    <div>
+                                          <h3>Nome utente:
+                                                <strong class="text-capitalize">
+                                                      {{ $message->name }}
+                                                </strong>
+                                          </h3>
+                                    </div>
+                                    <div>
+                                          <h3>Email utente:
+                                                <strong class="text-capitalize">
+                                                      {{ $message->email }}
+                                                </strong>
+                                          </h3>
+                                    </div>
+                                    <div>
+                                          <h3>Messaggio:
+                                                <strong class="text-capitalize">
+                                                      {{ $message->message }}
+                                                </strong>
+                                          </h3>
+                                    </div>
+                                    <div>
+                                          <h3>Data:
+                                                <strong class="text-capitalize">
+                                                      {{ $message->created_at }}
+                                                </strong>
+                                          </h3>
+                                    </div>
+                              </div>
+
+
+                              @empty
+                              <h5>Nessun messaggio per questa casa.</h5>
+                              @endforelse
+
                         </div>
+
                   </div>
             </div>
       </div>
+</div>
 </div>
 @endsection

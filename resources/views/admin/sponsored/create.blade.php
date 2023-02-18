@@ -25,7 +25,7 @@
         <div class="mb-3">
             <input type="number" name="duration" id="duration" class="form-control" placeholder="Durata" value="{{old('duration')}}" aria-describedby="helpId" required>
         </div>
-        <button type="submit" class="btn btn-primary">Invia!</button>
+        <button type="submit" class="btn btn_boolbnb">Invia!</button>
     </form>
 </div>
 @endsection

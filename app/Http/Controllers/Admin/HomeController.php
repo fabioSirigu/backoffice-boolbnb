@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateHomeRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -102,8 +103,13 @@ class HomeController extends Controller
                 $query->where('home_id', $home_id);
             })->get();
 
+            $messages = $messages->map(function ($message) {
+                $message->created_at = Carbon::parse($message->created_at)->format('H:i d-m-Y');
+                return $message;
+            });
+
             $services = Service::all();
-            return view('admin.homes.show', compact('home', 'services', 'messages'));
+            return view('admin.homes.show', compact('home', 'services', 'messages',));
         } else {
             $homes = Auth::user()->homes;
             return redirect()->route('admin.homes.index', compact('homes'))->with('message', "Non puoi accedere a questa casa!");
@@ -198,5 +204,9 @@ class HomeController extends Controller
         // return redirect()->route('products.index');
         $home->delete();
         return redirect()->route('admin.homes.index')->with('message', "The home: $home->title deleted successfully");
+    }
+
+    public function dateFormatter(Message $message)
+    {
     }
 }

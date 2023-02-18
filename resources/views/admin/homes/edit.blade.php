@@ -12,7 +12,7 @@
 </div>
 @endif
 <div class="container">
-    <a href="{{ route('admin.homes.index') }}" class="btn btn-primary my-2">
+    <a href="{{ route('admin.homes.index') }}" class="btn btn_boolbnb my-2">
         <i class="fas fa-angle-left fa-fw"></i> Torna Indietro
     </a>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -97,7 +97,7 @@
                 * campi obbligatori
             </em>
         </p>
-        <button type="submit" class="btn btn-primary">Invia!</button>
+        <button type="submit" class="btn btn_boolbnb">Invia!</button>
     </form>
 </div>
 <!-- <script src="{{asset('/js/autocomplete.js')}}"></script> -->

@@ -1,8 +1,13 @@
 @use './partials/header';
 @import '~bootstrap/scss/bootstrap';
 
-.favicon {
-      width: 50px;
+.btn_boolbnb {
+      background-color: #ff385c;
+      color: white;
+}
+
+.border_bottom {
+      border-bottom: 1px solid lightgray;
 }
 
 #app {

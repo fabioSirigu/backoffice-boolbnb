@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a href="{{ url('http://localhost:5174/') }}" class="btn btn-primary my-2">
+            <a href="{{ url('http://localhost:5174/') }}" class="btn btn_boolbnb my-2">
                 <i class="fas fa-angle-left fa-fw"></i> Indietro
             </a>
             <div class="card">
@@ -94,7 +94,7 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn_boolbnb">
                                     {{ __('Registrati') }}
                                 </button>
                             </div>

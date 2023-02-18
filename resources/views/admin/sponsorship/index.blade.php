@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div>
-    <a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
+    <a class="btn btn_boolbnb mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
 
     <h1 class="mt-3 text-center">
         Scegli il tipo di sponsorizzazione

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<a href="{{route('admin.services.create')}}" class="btn btn-primary my-3" role="button">Aggiungi Servizi</a>
+<a href="{{route('admin.services.create')}}" class="btn btn_boolbnb my-3" role="button">Aggiungi Servizi</a>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800 py-4">Servizi</h1>
 </div>

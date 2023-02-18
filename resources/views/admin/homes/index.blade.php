@@ -10,12 +10,12 @@
       </ul>
 </div>
 @endif
-<a href="{{ url('admin') }}" class="btn btn-primary my-2">
+<a href="{{ url('admin') }}" class="btn btn_boolbnb my-2">
       <i class="fas fa-angle-left fa-fw"></i> Torna alla Dashboard
 </a>
 <h1 class="h3 mb-0 text-gray-800 py-4">Le Tue Case</h1>
 <div class="d-inline-block">
-      <a href="{{route('admin.homes.create')}}" class="btn btn-primary my-3 d-flex align-items-center" role="button">
+      <a href="{{route('admin.homes.create')}}" class="btn btn_boolbnb my-3 d-flex align-items-center" role="button">
             <i style="font-size: 40px;" class="fa-solid fa-square-plus me-2"></i> Aggiungi Una Casa
       </a>
 </div>

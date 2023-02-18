@@ -5,9 +5,11 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto d-flex align-items-center">
-                              <li class="nav-item">
-                                    <img src="/img/logoBnBlateral.png" alt="" class="logo">
-                              </li>
+                              <a href="{{ url('http://localhost:5174/') }}">
+                                    <li class="nav-item">
+                                          <img src="/img/logoBnBlateral.png" alt="" class="logo">
+                                    </li>
+                              </a>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -15,11 +17,11 @@
                               <!-- Authentication Links -->
                               @guest
                               <li class="nav-item">
-                                    <a class="nav-link btn btn-primary text-white mx-1" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                                    <a class="nav-link btn btn_boolbnb text-white mx-1" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                               </li>
                               @if (Route::has('register'))
                               <li class="nav-item">
-                                    <a class="nav-link btn btn-primary text-white" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                    <a class="nav-link btn btn_boolbnb text-white" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                               </li>
                               @endif
                               @else

@@ -19,7 +19,7 @@
         <div class="mb-3">
             <input type="text" name="title" id="title" class="form-control" placeholder="Nome" value="{{old('title')}}" aria-describedby="helpId" required>
         </div>
-        <button type="submit" class="btn btn-primary">Invia!</button>
+        <button type="submit" class="btn btn_boolbnb">Invia!</button>
     </form>
 </div>
 @endsection

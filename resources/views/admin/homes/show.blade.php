@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<a class="btn btn-primary mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
+<a class="btn btn_boolbnb mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna all'Area Personale</a>
 
 <div class="container my-3">
       <div class="row align-items-center">
@@ -50,33 +50,20 @@
                               @forelse($messages as $message)
 
                               <div class="card card-message w-50 my-2 p-2">
-                                    <div>
-                                          <h3>Nome utente:
-                                                <strong class="text-capitalize">
-                                                      {{ $message->name }}
-                                                </strong>
-                                          </h3>
+                                    <div class="text-capitalize d-flex justify-content-between">
+                                          <h5>
+                                                {{ $message->name }}
+                                          </h5>
+                                          <span>
+                                                {{$message->created_at}}
+                                                <!-- $newDate -->
+                                          </span>
+                                    </div>
+                                    <div class="border_bottom">
+                                          {{ $message->email }}
                                     </div>
                                     <div>
-                                          <h3>Email utente:
-                                                <strong class="text-capitalize">
-                                                      {{ $message->email }}
-                                                </strong>
-                                          </h3>
-                                    </div>
-                                    <div>
-                                          <h3>Messaggio:
-                                                <strong class="text-capitalize">
-                                                      {{ $message->message }}
-                                                </strong>
-                                          </h3>
-                                    </div>
-                                    <div>
-                                          <h3>Data:
-                                                <strong class="text-capitalize">
-                                                      {{ $message->created_at }}
-                                                </strong>
-                                          </h3>
+                                          {{ $message->message }}
                                     </div>
                               </div>
 

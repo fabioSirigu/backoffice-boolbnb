@@ -47,7 +47,7 @@
                                     </a>
                               </div>
                               <div class="d-flex align-items-center justify-content-between mt-3">
-                                    <a class="btn btn-warning" href="{{route('admin.sponsorship.index')}}">
+                                    <a class="btn btn-warning" href="{{route('admin.sponsorship.index', $home->slug)}}">
                                           Sponsorizza
                                     </a>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteHome-{{$home->slug}}">

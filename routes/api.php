@@ -49,6 +49,5 @@ Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
 
 Route::post('/messages', [MessageController::class, 'store']);
 
-Route::get('sponsoreds', [SponsoredController::class, 'index']);
-Route::get('orders/generate', [PaymentController::class, 'generate']);
-Route::post('orders/make/payment', [PaymentController::class, 'makePayment']);
+Route::get('/payments/token', [PaymentController::class, 'getClientToken'])->name('payments.token');
+Route::post('/payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');

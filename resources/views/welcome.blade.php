@@ -11,13 +11,8 @@
         @endif
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis reprehenderit accusantium facere id aliquid iure dignissimos doloremque ab at molestiae. Adipisci modi debitis deleniti cupiditate ab in quibusdam voluptatibus nam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius totam, laboriosam esse minima architecto blanditiis deserunt tenetur aut voluptatibus molestiae ab quidem tempora, quis commodi praesentium? Magnam eos eaque enim!
         </p>
-        <div class="link-homes">
-            <a class="btn btn_boolbnb mt-4" href="{{ url('http://localhost:5174/') }}" role="button">
-                <i class="fas fa-angle-left fa-fw"></i> Torna Al Sito
-            </a>
-        </div>
         @if (Auth::user())
-        <a href="{{route('admin.homes.index')}}" class="btn btn-primary">Vedi Tutte Le Case</a>
+        <a href="{{route('admin.homes.index')}}" class="btn btn_boolbnb">Vedi Tutte Le Case</a>
         @endif
     </div>
 </div>

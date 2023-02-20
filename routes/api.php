@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Guard\ApiGuard;
 use App\Http\Controllers\API\MessageController;
-use App\Http\Controllers\Api\Payments\PaymentController;
-use App\Http\Controllers\Api\Sponsoreds\SponsoredController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +46,3 @@ Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {
 });
 
 Route::post('/messages', [MessageController::class, 'store']);
-
-Route::get('/payments/token', [PaymentController::class, 'getClientToken'])->name('payments.token');
-Route::post('/payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');

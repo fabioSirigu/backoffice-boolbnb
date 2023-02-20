@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Payments;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,51 +20,16 @@ class PaymentController extends Controller
 
         $clientToken = $gateway->clientToken()->generate();
 
-        return response()->json([
-            'token' => $clientToken
-        ]);
+        return view('admin.sponsorship.checkout', compact('clientToken'));
     }
 
-    public function checkout(Request $request)
+    public function processCheckout(Request $request)
     {
         $sponsoredId = $request->input('sponsored_id');
 
         $sponsored = Sponsored::findOrFail($sponsoredId);
 
-        $gateway = new Gateway([
-            'environment' => env('BRAINTREE_ENVIRONMENT'),
-            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
-            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
-            'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
-        ]);
-
-        $result = $gateway->transaction()->sale([
-            'amount' => $sponsored->price,
-            'paymentMethodNonce' => 'fake-valid-nonce',
-            'options' => [
-                'submitForSettlement' => true
-            ]
-        ]);
-
-        if ($result->success) {
-
-            return response()->json([
-                'message' => 'Il pagamento è stato effettuato con successo.'
-            ]);
-        } else {
-            // Il pagamento è fallito, restituisci un messaggio di errore
-            return response()->json([
-                'error' => 'Il pagamento ha fallito.'
-            ]);
-        }
-    }
-
-    public function payWithCard(Request $request)
-    {
-        $sponsoredId = $request->input('sponsored_id');
-        $nonce = $request->input('nonce');
-
-        $sponsored = Sponsored::findOrFail($sponsoredId);
+        $nonce = $request->input('payment_method_nonce');
 
         $gateway = new Gateway([
             'environment' => env('BRAINTREE_ENVIRONMENT'),
@@ -82,13 +47,35 @@ class PaymentController extends Controller
         ]);
 
         if ($result->success) {
-            return response()->json([
-                'message' => 'Il pagamento è stato effettuato con successo.'
-            ]);
+            // Il pagamento è stato effettuato con successo, reindirizza l'utente a una view di conferma
+            return view('admin.sponsorship.confirmation', ['sponsoredId' => $sponsoredId]);
         } else {
-            return response()->json([
-                'error' => 'Il pagamento ha fallito.'
-            ]);
+            // Il pagamento è fallito, reindirizza l'utente a una view di errore
+            return view('admin.sponsorship.index', ['message' => 'Il pagamento ha fallito.']);
         }
+    }
+
+    public function showCheckoutForm($sponsoredId)
+    {
+        $gateway = new Gateway([
+            'environment' => env('BRAINTREE_ENVIRONMENT'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
+        ]);
+
+
+        $clientToken = $gateway->clientToken()->generate();
+
+        $sponsored = Sponsored::findOrFail($sponsoredId);
+
+        return view('admin.sponsorship.checkout', compact('sponsored', 'clientToken'));
+    }
+
+    public function confirmation($sponsoredId)
+    {
+        $sponsored = Sponsored::findOrFail($sponsoredId);
+
+        return view('admin.sponsorship.confirmation', compact('sponsored'));
     }
 }

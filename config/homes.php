@@ -129,7 +129,7 @@ return [
     ],
     [
         'user_id' => '2',
-        'title' => 'Casa con grande terrazza Empoli',
+        'title' => 'Casa con grande terrazza',
         'slug' => '',
         'rooms' => '6',
         'beds' => '2',
@@ -521,7 +521,7 @@ return [
     ],
     [
         'user_id' => '5',
-        'title' => 'Torre Argentina',
+        'title' => 'Casale Argentina',
         'slug' => '',
         'rooms' => '2',
         'beds' => '2',

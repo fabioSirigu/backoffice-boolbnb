@@ -17,11 +17,7 @@
                     <h5 class="card-title">{{$sponsored->title}}</h5>
                     <div>Prezzo: {{$sponsored->price}} €</div>
                     <div>Durata: {{$sponsored->duration}} h</div>
-                    <form method="POST" action="{{ route('payments.checkout') }}">
-                        @csrf
-                        <input type="hidden" name="sponsored_id" value="{{$sponsored->id}}" />
-                        <button type="submit" class="btn btn-primary btn-block">Paga con carta fittizia!</button>
-                    </form>
+                    <a href="{{ route('admin.sponsorship.checkout', ['sponsoredId' => $sponsored->id]) }}" class="btn btn-primary mt-2">Effettua il pagamento</a>
                 </div>
             </div>
             @endforeach

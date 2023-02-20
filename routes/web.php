@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\admin\SponsorshipController;
+use App\Http\Controllers\Admin\PaymentController;
 
 
 /*
@@ -44,8 +45,12 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy']);
 
     Route::resource('sponsorship', SponsorshipController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
-});
 
+    Route::get('sponsorship/checkout', [PaymentController::class, 'getClientToken'])->name('admin.sponsorship.checkout');
+    Route::get('sponsorship/{sponsoredId}/checkout', [PaymentController::class, 'showCheckoutForm'])->name('sponsorship.checkout');
+    Route::post('sponsorship/{sponsoredId}/checkout', [PaymentController::class, 'processCheckout'])->name('sponsorship.process_checkout');
+    Route::get('sponsorship/{sponsoredId}/confirmation', [PaymentController::class, 'confirmation'])->name('sponsorship.confirmation');
+});
 
 
 require __DIR__ . '/auth.php';

@@ -32,7 +32,7 @@ return [
     [
         'name' => 'Quinto',
         'lastname' => 'User',
-        'date_of_birth' => '2023-20-02',
+        'date_of_birth' => '2023-02-20',
         'email' => 'quinto@user.it',
         'password' => '$2y$10$s7vr2wF.mOcwhFnZFgwHmOTgMz0YYuJYsfOX2ecyMefyrPiA.hZXK'
     ]

@@ -206,8 +206,8 @@ return [
         'bathrooms' => '1',
         'square_meters' => '96',
         'address' => 'Via J. da Diacceto, 40, Firenze',
-        'latitude' => '43.77849',
-        'longitude' => '11.241015',
+        'latitude' => '43.778400',
+        'longitude' => '11.243600',
         'cover_image' => '',
         'visible' => true
     ],

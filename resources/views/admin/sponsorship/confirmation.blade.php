@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <p>Grazie per aver sottoscritto una sponsorizzazione!</p>
-                    <a href="{{ route('admin.homes.index') }}" class="btn btn-primary">Torna alla lista dei tuoi appartamenti</a>
+                    <a href="{{ route('admin.homes.index') }}" class="btn btn_boolbnb">Torna alla lista dei tuoi appartamenti</a>
                 </div>
             </div>
         </div>

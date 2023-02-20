@@ -30,11 +30,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/homes', [HomeController::class, 'index']);
 Route::get('/homes/{home:slug}', [HomeController::class, 'show']);
 
-Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'searchHomes']);
+Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'quellaBuona']);
 
 Route::get('/services', [HomeController::class, 'getServices']);
-
-Route::get('/search/{latitude}/{logitude}/{radius}', [HomeController::class, 'search'])->name('search');
 
 Route::get('/homes/filter', [HomeController::class, 'filterHomes']);
 

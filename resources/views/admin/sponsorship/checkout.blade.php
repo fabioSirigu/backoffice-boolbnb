@@ -17,10 +17,11 @@
                     <div class="card-header">{{ __('Dati Pagamento') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.sponsorship.process_checkout', ['sponsoredId' => $sponsored->id]) }}" id="payment-form">
+                        <form method="POST" action="{{ route('admin.sponsorship.process_checkout', ['sponsoredId' => $sponsored->id, 'home' => $home->id]) }}" id="payment-form">
                             @csrf
 
                             <input type="hidden" name="sponsored_id" value="{{$sponsored->id}}">
+                            <input type="hidden" name="homes_id" value="{{$home->id}}">
                             <input type="hidden" name="payment_method_nonce" id="nonce" />
 
                             <div class="form-group row">

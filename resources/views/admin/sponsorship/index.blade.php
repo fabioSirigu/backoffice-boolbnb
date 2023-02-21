@@ -17,7 +17,7 @@
                     <h5 class="card-title">{{$sponsored->title}}</h5>
                     <div>Prezzo: {{$sponsored->price}} €</div>
                     <div>Durata: {{$sponsored->duration}} h</div>
-                    <a href="{{ route('admin.sponsorship.checkout', ['sponsoredId' => $sponsored->id]) }}" class="btn btn-primary mt-2">Effettua il pagamento</a>
+                    <a href="{{ route('admin.sponsorship.checkout', ['sponsoredId' => $sponsored->id, 'home' => $home->id]) }}" class="btn btn-primary mt-2">Effettua il pagamento</a>
                 </div>
             </div>
             @endforeach

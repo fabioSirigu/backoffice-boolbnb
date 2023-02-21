@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sponsored;
+use App\Models\Home;
 
 class SponsorshipController extends Controller
 {
@@ -14,12 +15,14 @@ class SponsorshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::id();
         $sponsoreds = Sponsored::orderByDesc('id')->get();
+        $homeId = $request->query('home');
+        $home = Home::findOrFail($homeId);
 
-        return view('admin.sponsorship.index', compact('user', 'sponsoreds'));
+        return view('admin.sponsorship.index', compact('user', 'sponsoreds', 'home'));
     }
 
     /**

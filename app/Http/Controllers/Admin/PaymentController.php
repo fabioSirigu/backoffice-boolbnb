@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Models\Sponsored;
+use App\Models\Home;
 
 class PaymentController extends Controller
 {
@@ -26,8 +27,10 @@ class PaymentController extends Controller
     public function processCheckout(Request $request)
     {
         $sponsoredId = $request->input('sponsored_id');
+        $homeId = $request->input('homes_id');
 
         $sponsored = Sponsored::findOrFail($sponsoredId);
+        $home = Home::findOrFail($homeId);
 
         $nonce = $request->input('payment_method_nonce');
 
@@ -48,6 +51,7 @@ class PaymentController extends Controller
 
         if ($result->success) {
             // Il pagamento è stato effettuato con successo, reindirizza l'utente a una view di conferma
+            $home->sponsoreds()->attach($sponsoredId);
             return view('admin.sponsorship.confirmation', ['sponsoredId' => $sponsoredId]);
         } else {
             // Il pagamento è fallito, reindirizza l'utente a una view di errore
@@ -66,10 +70,12 @@ class PaymentController extends Controller
 
 
         $clientToken = $gateway->clientToken()->generate();
+        $home = Home::findOrFail($sponsoredId);
+
 
         $sponsored = Sponsored::findOrFail($sponsoredId);
 
-        return view('admin.sponsorship.checkout', compact('sponsored', 'clientToken'));
+        return view('admin.sponsorship.checkout', compact('sponsored', 'clientToken', 'home'));
     }
 
     public function confirmation($sponsoredId)

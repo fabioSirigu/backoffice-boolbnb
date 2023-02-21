@@ -57,6 +57,7 @@ class PaymentController extends Controller
                 'initial_date' => $now,
                 'end_date' => $now->addDays($sponsored->duration)
             ]);
+            $home->update(['sponsored' => 1]); // Aggiorna la colonna sponsored della casa sponsorizzata a 1
             return view('admin.sponsorship.confirmation', ['sponsoredId' => $sponsoredId]);
         } else {
             // Il pagamento è fallito, reindirizza l'utente a una view di errore

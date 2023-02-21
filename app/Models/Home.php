@@ -14,7 +14,7 @@ class Home extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'slug', 'rooms', 'beds', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'cover_image', 'visible'];
+    protected $fillable = ['user_id', 'title', 'slug', 'rooms', 'beds', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'cover_image', 'visible', 'sponsored'];
 
     public static function createSlug($title)
     {

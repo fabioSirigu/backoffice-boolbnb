@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <a class="btn btn_boolbnb mt-4" href="{{route('admin.sponsorship.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna alla lista delle sponsorizzazioni</a>
+    <a class="btn btn_boolbnb mt-4" href="{{route('admin.homes.index')}}" role="button"><i class="fas fa-angle-left fa-fw"></i>Torna alla lista delle tue case</a>
 
     <h1 class="mt-3 text-center">
         Pagamento Sponsorizzazione: {{$sponsored->title}}

@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function sponsored()
+    {
+        $homes = Home::with(['services', 'sponsored'])->whereHas('sponsored', function ($query) {
+            $query->where('home_sponsored.sponsored_id', '=', 1); // sostituisci 1 con l'ID del sponsor che stai cercando
+        })->get();
+
+        if ($homes->count() > 0) {
+            return response()->json([
+                'success' => true,
+                'data' => $homes
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'Nessuna Casa trovata.'
+            ]);
+        }
+    }
 
     public function quellaBuona($latitude, $longitude, $radius)
     {

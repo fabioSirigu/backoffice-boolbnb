@@ -32,6 +32,8 @@ Route::get('/homes/{latitude}/{logitude}/{radius}', [HomeController::class, 'que
 
 Route::get('/services', [HomeController::class, 'getServices']);
 
+Route::get('/sponsored', [HomeController::class, 'sponsored']);
+
 Route::get('/homes/filter', [HomeController::class, 'filterHomes']);
 
 Route::middleware(['auth:api'])->get('/api/user', function (Request $request) {

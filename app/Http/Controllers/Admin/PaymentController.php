@@ -28,7 +28,7 @@ class PaymentController extends Controller
     public function processCheckout(Request $request)
     {
         $sponsoredId = $request->input('sponsored_id');
-        $homeId = $request->route('home');
+        $homeId = $request->input('home_id');
 
         $sponsored = Sponsored::findOrFail($sponsoredId);
         $home = Home::findOrFail($homeId);
@@ -52,11 +52,12 @@ class PaymentController extends Controller
 
         if ($result->success) {
             // Il pagamento è stato effettuato con successo, reindirizza l'utente a una view di conferma
+            $home->sponsoreds()->attach($sponsoredId);
             $now = Carbon::now();
-            $home->sponsoreds()->attach($sponsoredId, [
+            /* $home->sponsoreds()->attach($sponsoredId, [
                 'initial_date' => $now,
                 'end_date' => $now->addDays($sponsored->duration)
-            ]);
+            ]); */
             return view('admin.sponsorship.confirmation', ['sponsoredId' => $sponsoredId]);
         } else {
             // Il pagamento è fallito, reindirizza l'utente a una view di errore

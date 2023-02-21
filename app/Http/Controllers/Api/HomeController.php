@@ -11,9 +11,7 @@ class HomeController extends Controller
 {
     public function sponsored()
     {
-        $homes = Home::with(['services', 'sponsored'])->whereHas('sponsored', function ($query) {
-            $query->where('home_sponsored.sponsored_id', '=', 1); // sostituisci 1 con l'ID del sponsor che stai cercando
-        })->get();
+        $homes = Home::with(['services'])->where('sponsored', '=', 1)->get();
 
         if ($homes->count() > 0) {
             return response()->json([

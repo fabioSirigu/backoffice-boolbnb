@@ -38,6 +38,9 @@
                         <div class="card-body">
                               <h5 class="card-title">{{$home->title}}</h5>
                               <p class="card-text">{{$home->content}}</p>
+                              @if($home->sponsoreds->count() > 0)
+                              <span class="badge bg-warning text-dark mb-3">Sponsorizzata</span>
+                              @endif
                               <div class="d-flex align-items-center justify-content-between">
                                     <a class="btn btn-primary" href="{{route('admin.homes.show', $home->slug)}}">
                                           Visualizza

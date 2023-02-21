@@ -47,8 +47,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('sponsorship', SponsorshipController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
 
     Route::get('sponsorship/checkout', [PaymentController::class, 'getClientToken'])->name('admin.sponsorship.checkout');
-    Route::get('sponsorship/{sponsoredId}/checkout', [PaymentController::class, 'showCheckoutForm'])->name('sponsorship.checkout');
-    Route::post('sponsorship/{sponsoredId}/checkout', [PaymentController::class, 'processCheckout'])->name('sponsorship.process_checkout');
+    Route::get('sponsorship/{sponsoredId}/checkout/{home}', [PaymentController::class, 'showCheckoutForm'])->name('sponsorship.checkout');
+    Route::post('sponsorship/{sponsoredId}/checkout/{home}', [PaymentController::class, 'processCheckout'])->name('sponsorship.process_checkout');
     Route::get('sponsorship/{sponsoredId}/confirmation', [PaymentController::class, 'confirmation'])->name('sponsorship.confirmation');
 });
 

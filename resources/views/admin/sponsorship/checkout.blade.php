@@ -21,7 +21,6 @@
                             @csrf
 
                             <input type="hidden" name="sponsored_id" value="{{$sponsored->id}}">
-                            <input type="hidden" name="homes_id" value="{{$home->id}}">
                             <input type="hidden" name="payment_method_nonce" id="nonce" />
 
                             <div class="form-group row">

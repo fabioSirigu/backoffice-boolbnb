@@ -10,6 +10,12 @@
       border-bottom: 1px solid lightgray;
 }
 
+.my_image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+}
+
 #app {
 
       nav {

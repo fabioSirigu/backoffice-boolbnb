@@ -29,7 +29,7 @@
                   <div class="card m-3 text-center d-flex justify-content-center flex-column" style="width: 18rem;">
                         <div class="card-img mt-2">
                               @if($home->cover_image)
-                              <img class="img-fluid" src="{{asset('storage/' . $home->cover_image)}}" alt="">
+                              <img class="img-fluid my_image" src="{{asset('storage/' . $home->cover_image)}}" alt="">
                               @else
                               <img src="/img/placeholder_600.png" alt="" class="img-fluid">
 

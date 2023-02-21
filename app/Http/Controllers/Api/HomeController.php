@@ -10,20 +10,28 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
 
-    public function searchHomes($latitude, $longitude, $radius)
+    public function quellaBuona($latitude, $longitude, $radius)
     {
         $radius = 6371;
 
-        $filteredHomes = DB::select(DB::raw('SELECT *, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance FROM homes WHERE visible=1 HAVING distance < 20 ORDER BY distance'));
+        $filteredHomes = Home::with(['services' => function ($query) {
+            $query->select('services.id', 'services.title');
+        }])
+            ->select(DB::raw('homes.*, ( ' . $radius . ' * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians(latitude) ) ) ) AS distance'))
+            ->leftJoin('home_service', 'homes.id', '=', 'home_service.home_id')
+            ->where('visible', 1)
+            ->having('distance', '<', 20)
+            ->groupBy('homes.id')
+            ->orderBy('distance')
+            ->get();
 
         return response()->json([
             'result' => 'success',
             'data' => $filteredHomes,
-
         ]);
     }
 
-    public function search($latitude, $longitude, $radius)
+    public function searchHomes($latitude, $longitude, $radius)
     {
         $radius = 6371;
 

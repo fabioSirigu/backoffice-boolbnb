@@ -25,7 +25,7 @@
                             <input type="hidden" name="payment_method_nonce" id="nonce" />
 
                             <div class="form-group row">
-                                <label for="card-number" class="col-md-4 col-form-label text-md-right">{{ __('Numero Carta') }}</label>
+
 
                                 <div class="col-md-6">
                                     <div id="card-number"></div>
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="expiration-date" class="col-md-4 col-form-label text-md-right">{{ __('Data di scadenza') }}</label>
+
 
                                 <div class="col-md-6">
                                     <div id="expiration-date"></div>
@@ -42,7 +42,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn_boolbnb">
                                         {{ __('Paga') }}
                                     </button>
                                 </div>
